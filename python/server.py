@@ -3,7 +3,6 @@ from __future__ import division
 import re
 import sys
 import text_to_speech
-import shutil
 
 from google.cloud import speech
 from google.cloud.speech import enums

@@ -9,15 +9,14 @@ import boto3
 client = boto3.client('polly')
 
 class TextToSpeech(Parent):
-    def __init__(self, mixer, sleep=False, max_client=None, save=False):
-        print("initing")
+    def __init__(self, mixer, sleep=False, max_client=None, save=False, file_index=0):
         Parent.__init__(self)
         self.mixer = mixer
         self.text = ""
         self.save_file = save
         self.max_client = max_client
         self.sleep = sleep
-        self.file_index = 0
+        self.file_index = file_index
 
         self._voice_ids = [
             'Geraint', 'Gwyneth', 'Mads', 'Naja', 'Hans', 'Marlene', 'Nicole',
@@ -31,11 +30,7 @@ class TextToSpeech(Parent):
 
     def _save(self, text, sound_data):
         self.text = text
-        i = self.file_index
-        fname = "{}.wav".format(text)
-        print('saving', fname)
-        self.file_index =  self.file_index + 1
-
+        fname = "../audio/{}.wav".format(self.file_index)
         data = wave.open(fname, 'w')
         data.setparams((1, 2, 16200, 0, 'NONE', 'NONE'))
         data.writeframes(sound_data)

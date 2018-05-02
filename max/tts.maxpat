@@ -4,12 +4,12 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 3,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 35.0, 97.0, 890.0, 898.0 ],
+		"rect" : [ 34.0, 88.0, 1852.0, 908.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,17 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "ezdac~",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 217.0, 544.800049, 45.0, 45.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-27",
 					"maxclass" : "number",
@@ -182,14 +193,14 @@
 				"box" : 				{
 					"autopopulate" : 1,
 					"id" : "obj-1",
-					"items" : [ "AlphaChannel_Rotator.mp4", ",", "Baby's Nursery (home).mov", ",", "Baby's Nursery (interference).mov", ",", "Bloat House.mov", ",", "cogs_greenScreen.mov", ",", "Day-Glo Bender.mov", ",", "Diagonal I-Beams (diamond quilted).mov", ",", "Diagonal I-Beams (red light district).mov", ",", "Diagonal I-Beams (saturated bump map).mov", ",", "Diagonal I-Beams (unwoven flag).mov", ",", "Diagonal I-Beams (wind smuckered hollow).mov", ",", "Diminishing Rapid Cuts (beveled edges).mov", ",", "Diminishing Rapid Cuts (boosted pillows).mov", ",", "Diminishing Rapid Cuts (fractioned quartz).mov", ",", "Diminishing Rapid Cuts (shake juice).mov", ",", "Diminishing Rapid Cuts (supple grabbag).mov", ",", "Diminishing Rapid Cuts (syncology).mov", ",", "Fluorescent Tube Nights (!).mov", ",", "Fluorescent Tube Nights (*).mov", ",", "Fluorescent Tube Nights (+).mov", ",", "Fluorescent Tube Nights (heavy #).mov", ",", "Fluorescent Tube Nights (heavy &).mov", ",", "Fluorescent Tube Nights (heavy ^).mov", ",", "Haptic Ribcage (blue danube).mov", ",", "Haptic Ribcage (coral salad).mov", ",", "Haptic Ribcage (creeping pine tar).mov", ",", "Haptic Ribcage (hiccup step).mov", ",", "Haptic Ribcage (line flecking).mov", ",", "Heavy Folds.mov", ",", "Japanese Lanterns (candied white clouds).mov", ",", "Japanese Lanterns (garage fuzz).mov", ",", "Japanese Lanterns (ghost crater).mov", ",", "Japanese Lanterns (rubies & emeralds).mov", ",", "Japanese Lanterns (spilled evening).mov", ",", "Postal Erogeny.mov", ",", "Push & Pull (blossom rotations).mov", ",", "Push & Pull (cracked eyeholes).mov", ",", "Push & Pull (higher mountain gas clouds).mov", ",", "Push & Pull (laffy taffy cruiser).mov", ",", "Push & Pull (pleasure thrown).mov", ",", "Push & Pull (precious vein).mov", ",", "Push & Pull (riptide venture).mov", ",", "Push & Pull (totem pole circuit).mov", ",", "Tender Blush (closure shadow).mov", ",", "Tender Blush (earthquake memory).mov", ",", "Tender Blush (importation futures).mov", ",", "Tender Blush (pushing macho).mov" ],
+					"items" : [ "0 - Copy.wav", ",", "0.wav" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 151.0, 200.0, 100.0, 22.0 ],
-					"prefix" : "Macintosh HD:/Users/matt_romein/Desktop/Texture Cuts/",
+					"patching_rect" : [ 150.199997, 200.800003, 100.0, 22.0 ],
+					"prefix" : "C:/Users/samhains/Desktop/touch/lipp_performance_3/audio/",
 					"style" : ""
 				}
 
