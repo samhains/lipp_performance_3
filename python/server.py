@@ -1,43 +1,20 @@
-# [START import_libraries]
 from __future__ import division
 
+import re
 import sys
-import os
+import text_to_speech
+import shutil
 
-from classes.GoogleScraper import GoogleScraper
-from classes.GifScraper import GifScraper
-from classes.TextToSpeech import TextToSpeech
 from google.cloud import speech
-import random
-import threading
-from utility import *
-from pythonosc import udp_client
-from pythonosc import dispatcher
-from pythonosc import osc_server
-import spacy_nlp
-
-import time
 from google.cloud.speech import enums
 from google.cloud.speech import types
 import pyaudio
-from pygame import mixer
 from six.moves import queue
-
-nlp, lexmap, phonmap, phonlookup, t, p = spacy_nlp.prepare_nlp()
-
 # [END import_libraries]
-running = False
+
 # Audio recording parameters
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
-client = udp_client.SimpleUDPClient("localhost", 7401)
-mixer.init(channels=1, frequency=14000)
-
-client.send_message("/swap", " :start")
-client.send_message("/userspeak", " ")
-if not os.path.exists("./images"):
-    os.makedirs("./images")
-
 
 
 class MicrophoneStream(object):
@@ -56,7 +33,6 @@ class MicrophoneStream(object):
             format=pyaudio.paInt16,
             # The API currently only supports 1-channel (mono) audio
             # https://goo.gl/z757pE
-            input_device_index=1,
             channels=1, rate=self._rate,
             input=True, frames_per_buffer=self._chunk,
             # Run the audio stream asynchronously to fill the buffer object.
@@ -83,11 +59,8 @@ class MicrophoneStream(object):
         self._buff.put(in_data)
         return None, pyaudio.paContinue
 
-    def generator(self, start_time):
-        global running
-        while not self.closed and running:
-            # elapsed_time = time.time() - start_time
-            # if elapsed_time
+    def generator(self):
+        while not self.closed:
             # Use a blocking get() to ensure there's at least one chunk of
             # data, and stop iteration if the chunk is None, indicating the
             # end of the audio stream.
@@ -112,22 +85,16 @@ class MicrophoneStream(object):
 
 def listen_print_loop(responses):
     """Iterates through server responses and prints them.
-
     The responses passed is a generator that will block until a response
     is provided by the server.
-
     Each response may contain multiple results, and each result may contain
     multiple alternatives; for details, see https://goo.gl/tjCPAU.  Here we
     print only the transcription for the top alternative of the top result.
-
     In this case, responses are provided for interim results as well. If the
     response is an interim one, print a line feed at the end of it, to allow
     the next result to overwrite it, until the response is a final one. For the
     final one, print a newline to preserve the finalized transcription.
     """
-    print("beginning listen loop")
-    global running
-
     num_chars_printed = 0
     for response in responses:
         if not response.results:
@@ -143,6 +110,11 @@ def listen_print_loop(responses):
         # Display the transcription of the top alternative.
         transcript = result.alternatives[0].transcript
 
+        # Display interim results, but with a carriage return at the end of the
+        # line, so subsequent lines will overwrite them.
+        #
+        # If the previous result was longer than this one, we need to print
+        # some extra spaces to overwrite the previous result
         overwrite_chars = ' ' * (num_chars_printed - len(transcript))
 
         if not result.is_final:
@@ -152,78 +124,24 @@ def listen_print_loop(responses):
             num_chars_printed = len(transcript)
 
         else:
-            response = transcript + overwrite_chars
-            response = response.strip().lower()
-            if len(response.split(" ")) < 2:
-                return
+            cs_response = transcript + overwrite_chars
+            print(cs_response)
+            text_to_speech.run(cs_response)
 
-            TextToSpeech(mixer).save(response)
-            client.send_message("/userspeak", response)
+            # Exit recognition if any of the transcribed phrases could be
+            # one of our keywords.
+            if re.search(r'\b(exit|quit)\b', transcript, re.I):
+                print('Exiting..')
+                break
 
-            responses_arr = spacy_nlp.sentencewalk(response, nlp, lexmap, phonlookup, phonmap, t, p)
-            responses_arr = [response] + responses_arr
-
-            for i in range(4):
-                print('new response', i)
-                fname = "{}.wav".format(random.randint(1000,9999))
-
-                # response = phonetic_walk(response)
-                index = i
-                response = responses_arr[index]
+            num_chars_printed = 0
 
 
-                dir_str = make_url_str(response)
-                dir_name = "../images/"+dir_str
-                if response.endswith("."):
-                    response = response[:-1]
-
-                try:
-                    TextToSpeech(mixer).save(response)
-
-                    if not os.path.exists(dir_name):
-
-                        os.makedirs(dir_name)
-                        GifScraper(10).scrape(response, dir_name)
-                        GoogleScraper(30).scrape(response, dir_name)
-                        time.sleep(4)
-                        client.send_message("/swap", response+":"+dir_str)
-                    else:
-                        print("folder exists")
-                        client.send_message("/swap", response+":"+dir_str)
-
-                    time.sleep(10)
-
-                except ValueError:
-                    print("not enough items")
-
-
-            running = False
-            break
-
-def microphone_stream(client,  streaming_config):
-    with MicrophoneStream(RATE, CHUNK) as stream:
-        start_time = time.time()
-        audio_generator = stream.generator(start_time)
-        requests = (types.StreamingRecognizeRequest(audio_content=content)
-                    for content in audio_generator)
-
-        print('getting client response')
-        responses = client.streaming_recognize(streaming_config, requests)
-        print("finished responses")
-        # Now, put the transcription responses to use.
-        listen_print_loop(responses)
-
-
-def speech_mode():
+def main():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
-    global running
-
-    time.sleep(1.5)
-
     language_code = 'en-US'  # a BCP-47 language tag
-    # play_audio("welcome.wav")
-    # threading.Timer(1, turn_off_streaming).start()
+
     client = speech.SpeechClient()
     config = types.RecognitionConfig(
         encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
@@ -232,25 +150,17 @@ def speech_mode():
     streaming_config = types.StreamingRecognitionConfig(
         config=config,
         interim_results=True)
-    try:
-        print("starting microphone stream")
-        microphone_stream(client, streaming_config)
-        running = False
-    except Exception as e:
-        print(e)
 
-def start(root, value):
-    global running
-    print("Start", running)
-    if running == False:
-        running = True
-        thread = threading.Thread(target=speech_mode, daemon=True)
-        thread.start()
+    with MicrophoneStream(RATE, CHUNK) as stream:
+        audio_generator = stream.generator()
+        requests = (types.StreamingRecognizeRequest(audio_content=content)
+                    for content in audio_generator)
 
-dispatcher = dispatcher.Dispatcher()
-dispatcher.map("/start", start)
+        responses = client.streaming_recognize(streaming_config, requests)
 
-server = osc_server.ThreadingOSCUDPServer(("localhost", 7406), dispatcher)
-print("Serving on {}".format(server.server_address))
+        # Now, put the transcription responses to use.
+        listen_print_loop(responses)
 
-server.serve_forever()
+
+if __name__ == '__main__':
+    main()

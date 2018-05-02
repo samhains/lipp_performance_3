@@ -5,14 +5,15 @@ import random
 import time
 import wave
 import boto3
-from multiprocessing.dummy import Pool as ThreadPool
 
 client = boto3.client('polly')
 
 class TextToSpeech(Parent):
     def __init__(self, mixer, sleep=False, max_client=None, save=False):
+        print("initing")
         Parent.__init__(self)
         self.mixer = mixer
+        self.text = ""
         self.save_file = save
         self.max_client = max_client
         self.sleep = sleep
@@ -27,7 +28,8 @@ class TextToSpeech(Parent):
             'Maja', 'Ricardo', 'Vitoria', 'Cristiano', 'Ines', 'Carmen', 'Maxim',
             'Tatyana', 'Astrid', 'Filiz', 'Vicki'
         ]
-    def save(self, text, sound_data):
+
+    def _save(self, text, sound_data):
         self.text = text
         i = self.file_index
         fname = "{}.wav".format(text)
@@ -40,7 +42,7 @@ class TextToSpeech(Parent):
         if self.max_client != None:
             self.max_client.send_message("/speak", fname)
 
-    def _polly_request_and_play(self, text):
+    def _polly_request(self, text):
         voice_id = random.choice(['Joey', 'Joanna', 'Emma'])
         response = client.synthesize_speech(
             OutputFormat='pcm',
@@ -51,16 +53,16 @@ class TextToSpeech(Parent):
         self.sound_data = response["AudioStream"].read()
         # print(type(self.sound_data))
         if self.save_file:
-            self.save(text, self.sound_data)
+            self._save(text, self.sound_data)
         else:
             sound = self.mixer.Sound(self.sound_data)
             self.mixer.stop()
             sound.play()
         time.sleep(8)
 
-    def play(self, text):
+    def run_(self, text):
         self.text = text
-        self.target = self._polly_request_and_play
+        self.target = self._polly_request
         self.args = [self.text]
         self.start()
         if self.sleep:

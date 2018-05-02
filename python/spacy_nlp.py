@@ -1,139 +1,13 @@
 import spacy
 import random
 import annoy
+import string
 from wordfilter import Wordfilter
 from itertools import islice
+
+from spacy.lang.en.stop_words import STOP_WORDS as stop_words
 wf = Wordfilter()
 
-stopwords = [
-    "i",
-    "me",
-    "my",
-    "myself",
-    "we",
-    "our",
-    "ours",
-    "ourselves",
-    "you",
-    "your",
-    "yours",
-    "yourself",
-    "yourselves",
-    "he",
-    "him",
-    "his",
-    "himself",
-    "she",
-    "her",
-    "hers",
-    "herself",
-    "it",
-    "its",
-    "itself",
-    "they",
-    "them",
-    "their",
-    "theirs",
-    "themselves",
-    "what",
-    "which",
-    "who",
-    "whom",
-    "this",
-    "that",
-    "these",
-    "those",
-    "am",
-    "is",
-    "are",
-    "was",
-    "were",
-    "be",
-    "been",
-    "being",
-    "have",
-    "has",
-    "had",
-    "having",
-    "do",
-    "does",
-    "did",
-    "doing",
-    "a",
-    "an",
-    "the",
-    "and",
-    "but",
-    "if",
-    "or",
-    "because",
-    "as",
-    "until",
-    "while",
-    "of",
-    "at",
-    "by",
-    "for",
-    "with",
-    "about",
-    "against",
-    "between",
-    "into",
-    "through",
-    "during",
-    "before",
-    "after",
-    "above",
-    "below",
-    "to",
-    "from",
-    "up",
-    "down",
-    "in",
-    "out",
-    "on",
-    "off",
-    "over",
-    "under",
-    "again",
-    "further",
-    "then",
-    "once",
-    "here",
-    "there",
-    "when",
-    "where",
-    "why",
-    "how",
-    "all",
-    "any",
-    "both",
-    "each",
-    "few",
-    "more",
-    "most",
-    "other",
-    "some",
-    "such",
-    "no",
-    "nor",
-    "not",
-    "only",
-    "own",
-    "same",
-    "so",
-    "than",
-    "too",
-    "very",
-    "s",
-    "t",
-    "can",
-    "will",
-    "just",
-    "don",
-    "should",
-    "now"
-]
 
 def prepare_nlp():
     nlp = spacy.load('en_core_web_md') # or en_core_web_md
@@ -158,6 +32,8 @@ def prepare_nlp():
         phonmap.append(word)
         phonlookup[word] = vec
     p.build(25)
+
+
     return nlp, lexmap, phonmap, phonlookup, t, p
 
 def similarsemantic(t, nlp, word, n, lexmap):
@@ -187,18 +63,29 @@ def phonwalk(phonlookup, phonmap, p, current=None):
     seen = set()
     if current is None:
         current = random.choice(list(phonlookup.keys()))
-    seen.add(tuple(phonlookup[current]))
-    while True:
-        selected = [s for s in similarphonetic(phonlookup, phonmap, p, current, 100) \
-                    if tuple(phonlookup[s]) not in seen and len(s) in [7, 8, 9]][0]
-        yield selected
-        seen.add(tuple(phonlookup[selected]))
-        current = selected
+
+    current = current.rstrip(string.punctuation)
+    try:
+        seen.add(tuple(phonlookup[current]))
+        while True:
+            selected = [s for s in similarphonetic(phonlookup, phonmap, p, current, 100) \
+                        if tuple(phonlookup[s]) not in seen and len(s) in [7, 8, 9]][0]
+            yield selected
+            seen.add(tuple(phonlookup[selected]))
+            current = selected
+    except GeneratorExit:
+        return
+    except:
+        while True:
+            yield current
+
 
 def semanticwalk(nlp, lexmap, t, current=None):
     seen = set()
     if current is None:
         current = nlp.vocab[random.choice(lexmap).text].text
+
+    current = current.rstrip(string.punctuation)
     seen.add(current)
     while True:
         selected = [s for s in similarsemantic(t, nlp, current, 100, lexmap) if s not in seen][0]
@@ -210,11 +97,12 @@ def donothing(word):
     while True:
         yield word
 
-def sentencewalk(sentence, nlp, lexmap, phonlookup, phonmap, t, p):
+def sentencewalk(sentence, nlp, lexmap, phonmap, phonlookup, t, p, nwalks):
     sentence = sentence.split(" ")
+
     arr = []
     for i, word in enumerate(sentence):
-        if word in stopwords:
+        if word in stop_words:
             arr.append(donothing(word))
         elif i % 2 == 0:
             arr.append(semanticwalk(nlp, lexmap, t, current=word))
@@ -222,7 +110,7 @@ def sentencewalk(sentence, nlp, lexmap, phonlookup, phonmap, t, p):
             arr.append(phonwalk(phonlookup, phonmap, p, current=word))
 
     sentences_arr = []
-    for i in range(25):
+    for i in range(nwalks):
         final = " ".join([next(f) for f in arr])+"."
         sentences_arr.append(final)
 

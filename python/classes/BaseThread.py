@@ -1,6 +1,4 @@
 import threading
-import random
-import time
 
 class BaseThread(threading.Thread):
     def __init__(self, target=lambda x: None, args=[]):
