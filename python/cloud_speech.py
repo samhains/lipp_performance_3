@@ -1,24 +1,19 @@
 # [START import_libraries]
 from __future__ import division
 
-import re
 import sys
 import os
-import wave
 
 from classes.GoogleScraper import GoogleScraper
 from classes.GifScraper import GifScraper
 from classes.TextToSpeech import TextToSpeech
-import speech_to_text
 from google.cloud import speech
 import random
 import threading
-import time
 from utility import *
 from pythonosc import udp_client
 from pythonosc import dispatcher
 from pythonosc import osc_server
-from concurrent.futures import ThreadPoolExecutor
 import spacy_nlp
 
 import time
