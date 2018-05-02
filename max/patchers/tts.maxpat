@@ -42,7 +42,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 484.0, 424.0, 51.0, 22.0 ],
+					"patching_rect" : [ 484.799988, 424.0, 51.0, 22.0 ],
 					"style" : "",
 					"text" : "karma~"
 				}
