@@ -13,8 +13,8 @@ import shutil
 from pygame import mixer
 import spacy_nlp
 
-ROBOT_SPEECH_ECHO_DELAY = 10
-N_ECHO_WALKS = 5
+ROBOT_SPEECH_ECHO_DELAY = 0
+N_ECHO_WALKS = 0
 TOGGLE_SCRAPE = False
 TOGGLE_NLP = False
 TOGGLE_SAVE = True
@@ -23,10 +23,13 @@ TOGGLE_DELETE_FILES = True
 file_index = 0
 
 if TOGGLE_DELETE_FILES:
-    audio_path = "../audio"
+    audio_path = "../audio/"
     if os.path.exists(audio_path):
-        shutil.rmtree(audio_path)
-    os.mkdir('../audio/')
+        filelist = [ f for f in os.listdir(audio_path)]
+        for f in filelist:
+            os.remove(os.path.join(audio_path, f))
+    else:
+        os.mkdir(audio_path)
 
 max_client = udp_client.SimpleUDPClient("localhost", 7405)
 
@@ -77,4 +80,4 @@ def run(line, client=None):
         BaseThread(target=robot_speech_echoes, args=[speech_echoes_arr]).start()
 
     file_index += 1
-    time.sleep(s_time)
+    # time.sleep(s_time)

@@ -18,4 +18,5 @@ class BaseThread(threading.Thread):
         while not self.stopped():
             self.target(*self.args)
             if not self.continuous:
+                print("Stopping process")
                 self.stop()

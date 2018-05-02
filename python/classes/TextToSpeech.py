@@ -53,7 +53,8 @@ class TextToSpeech(Parent):
             sound = self.mixer.Sound(self.sound_data)
             self.mixer.stop()
             sound.play()
-        time.sleep(8)
+            # pygame is non blocking so thread things we are done!
+            time.sleep(8)
 
     def run_(self, text):
         self.text = text
