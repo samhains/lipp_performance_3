@@ -1,0 +1,10 @@
+images
+.ropeproject
+__pycache__
+images_2
+videos
+audio
+*.wav
+.ipynb_checkpoints
+python/.idea
+td/Backup
