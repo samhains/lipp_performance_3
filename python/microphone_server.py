@@ -2,14 +2,16 @@ from __future__ import division
 
 import re
 import sys
-import text_to_speech
-import os
 
+import google
+import pyaudio
 from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
-import pyaudio
 from six.moves import queue
+
+import text_to_speech
+
 # [END import_libraries]
 
 # Audio recording parameters
@@ -125,7 +127,6 @@ def listen_print_loop(responses):
 
         else:
             cs_response = transcript + overwrite_chars
-            print(cs_response)
             text_to_speech.run(cs_response)
 
             # Exit recognition if any of the transcribed phrases could be
@@ -159,12 +160,16 @@ def main():
         responses = client.streaming_recognize(streaming_config, requests)
 
         # Now, put the transcription responses to use.
-        listen_print_loop(responses)
+        try:
+            listen_print_loop(responses)
+        except google.cloud.exceptions._Rendezvous as e:
+            print("running main again")
+            main()
 
 
 if __name__ == '__main__':
     try:
-        while True:
-            main()
+        main()
+        print("new main!")
     except KeyboardInterrupt:
         print('Interrupted')

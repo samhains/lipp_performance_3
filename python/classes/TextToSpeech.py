@@ -29,7 +29,6 @@ class TextToSpeech(Parent):
 
     def _get_file_index(self):
         i = len([name for name in os.listdir('../audio/')])
-        print("index", i)
         return i
 
 

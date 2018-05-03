@@ -17,9 +17,9 @@ client = udp_client.SimpleUDPClient("localhost", 7402)
 
 threadLock = threading.Lock()
 ROBOT_SPEECH_ECHO_DELAY = 8
-N_ECHO_WALKS = 3
-TOGGLE_SCRAPE = True
-TOGGLE_NLP = True
+N_ECHO_WALKS = 2
+TOGGLE_SCRAPE = False
+TOGGLE_NLP = False
 TOGGLE_SAVE = True
 TOGGLE_DELETE_FILES = True
 
@@ -47,12 +47,12 @@ def scrape_line(query, dir_name):
 
 
 def robot_speech_echoes(speech_echoes_arr):
-    global threadLock
-
+    print("starting robot speech echoes")
     for i in range(N_ECHO_WALKS):
         sleep = i*ROBOT_SPEECH_ECHO_DELAY + ROBOT_SPEECH_ECHO_DELAY
         line = speech_echoes_arr[i]
         TextToSpeech(mixer, save=TOGGLE_SAVE, sleep=sleep).run_(line)
+    print("robot echoes finish")
 
 
 def run(line):
@@ -64,6 +64,7 @@ def run(line):
         dir_str = make_url_str(line)
         dir_name = "../images/"+dir_str
         if os.path.exists(dir_name):
+            time.sleep(4)
             client.send_message("/swap", line+":"+dir_str)
 
         else:
