@@ -1,19 +1,20 @@
-from pythonosc import udp_client
 from pythonosc import dispatcher
 from pythonosc import osc_server
+import microphone_server
 
-def start_button(*args):
+TOGGLE_PERFORMANCE = False
+
+def rb1(*args):
+    global TOGGLE_PERFORMANCE
     val = args[-1]
-    if val == 1.0:
-        print(args[0])
+    if val == 1.0 and TOGGLE_PERFORMANCE is not True:
+        print("Starting performance")
+        # microphone_server.run()
 
-def sliders(*args):
-    print(args[0], args[-1])
 
 
 dispatcher = dispatcher.Dispatcher()
-dispatcher.map("/b*", start_button )
-dispatcher.map("/s*", sliders )
+dispatcher.map("/rb1", rb1 )
 
 server = osc_server.ThreadingOSCUDPServer(("localhost", 7406), dispatcher)
 print("Serving on {}".format(server.server_address))
