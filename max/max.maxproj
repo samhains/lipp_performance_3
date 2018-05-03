@@ -2,8 +2,8 @@
 	"name" : "max",
 	"version" : 1,
 	"creationdate" : 3608127515,
-	"modificationdate" : 3608128175,
-	"viewrect" : [ 34.0, 88.0, 375.0, 634.0 ],
+	"modificationdate" : 3608199280,
+	"viewrect" : [ 703.0, 184.0, 802.0, 689.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -22,6 +22,21 @@
 			}
 ,
 			"karmapoly.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"launch_control.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"pattrtest.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"osc_out.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
