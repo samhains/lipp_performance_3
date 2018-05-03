@@ -127,6 +127,7 @@ def listen_print_loop(responses):
 
         else:
             cs_response = transcript + overwrite_chars
+            print(cs_response)
             text_to_speech.run(cs_response)
 
             # Exit recognition if any of the transcribed phrases could be
@@ -166,8 +167,7 @@ def main():
             print("running main again")
             main()
 
-
-if __name__ == '__main__':
+def run():
     try:
         main()
         print("new main!")

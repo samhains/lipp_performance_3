@@ -13,13 +13,17 @@ from pygame import mixer
 import spacy_nlp
 import threading
 from pythonosc import udp_client
-client = udp_client.SimpleUDPClient("localhost", 7402)
+client = udp_client.SimpleUDPClient("localhost", 7400)
+
 
 threadLock = threading.Lock()
 ROBOT_SPEECH_ECHO_DELAY = 8
 N_ECHO_WALKS = 2
-TOGGLE_SCRAPE = False
-TOGGLE_NLP = False
+N_GOOGLE_IMAGES = 30
+N_GIFS = 10
+
+TOGGLE_SCRAPE = True
+TOGGLE_NLP = True
 TOGGLE_SAVE = True
 TOGGLE_DELETE_FILES = True
 
@@ -31,9 +35,7 @@ if TOGGLE_DELETE_FILES:
             os.remove(os.path.join(audio_path, f))
     else:
         os.mkdir(audio_path)
-print("files deleted")
-
-max_client = udp_client.SimpleUDPClient("localhost", 7405)
+    print("files deleted")
 
 if TOGGLE_NLP:
     nlp_args = spacy_nlp.prepare_nlp()
@@ -42,8 +44,8 @@ if TOGGLE_NLP:
 def scrape_line(query, dir_name):
     query = query.strip().lower()
     os.makedirs(dir_name)
-    GoogleScraper(30).scrape(query, dir_name)
-    GifScraper(10).scrape(query, dir_name)
+    GoogleScraper(N_GOOGLE_IMAGES).scrape(query, dir_name)
+    GifScraper(N_GIFS).scrape(query, dir_name)
 
 
 def robot_speech_echoes(speech_echoes_arr):

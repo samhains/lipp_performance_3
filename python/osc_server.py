@@ -9,14 +9,19 @@ def rb1(*args):
     val = args[-1]
     if val == 1.0 and TOGGLE_PERFORMANCE is not True:
         print("Starting performance")
-        # microphone_server.run()
+        microphone_server.run()
 
+def s1(*args):
+    val = args[-1]
+    print(val)
 
 
 dispatcher = dispatcher.Dispatcher()
 dispatcher.map("/rb1", rb1 )
+dispatcher.map("/s1", s1 )
 
 server = osc_server.ThreadingOSCUDPServer(("localhost", 7406), dispatcher)
 print("Serving on {}".format(server.server_address))
+print("Press rb1 to the performance:".format(server.server_address))
 
 server.serve_forever()

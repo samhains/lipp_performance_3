@@ -54,7 +54,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 0,
-					"patching_rect" : [ 760.599976, 149.400009, 100.0, 22.0 ],
+					"patching_rect" : [ 760.599976, 151.000015, 100.0, 22.0 ],
 					"style" : "",
 					"text" : "tts.maxpat"
 				}
