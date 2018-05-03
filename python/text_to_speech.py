@@ -22,8 +22,6 @@ TOGGLE_NLP = True
 TOGGLE_SAVE = True
 TOGGLE_DELETE_FILES = True
 
-file_index = 0
-
 if TOGGLE_DELETE_FILES:
     audio_path = "../audio/"
     if os.path.exists(audio_path):
@@ -48,20 +46,15 @@ def scrape_line(query, dir_name):
 
 
 def robot_speech_echoes(speech_echoes_arr):
-    global file_index
     global threadLock
 
     for i in range(N_ECHO_WALKS):
         sleep = i*ROBOT_SPEECH_ECHO_DELAY + ROBOT_SPEECH_ECHO_DELAY
         line = speech_echoes_arr[i]
-        with threadLock:
-            file_index += 1
-            print("findex",i, file_index)
-        TextToSpeech(mixer, save=TOGGLE_SAVE, sleep=sleep, file_index=file_index).run_(line)
+        TextToSpeech(mixer, save=TOGGLE_SAVE, sleep=sleep).run_(line)
 
 
 def run(line, client=None):
-    global file_index
     mixer.init(channels=1, frequency=12100)
 
     line = line.rstrip(string.punctuation).strip().lower()
@@ -77,14 +70,13 @@ def run(line, client=None):
             if client:
                 client.send_message("/swap", line+":"+dir_str)
 
-        TextToSpeech(mixer, save=TOGGLE_SAVE, file_index=file_index).run_(line)
+        TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
     else:
 
-        TextToSpeech(mixer, save=TOGGLE_SAVE, file_index=file_index).run_(line)
+        TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
 
         if TOGGLE_NLP:
             time.sleep(ROBOT_SPEECH_ECHO_DELAY)
             speech_echoes_arr = spacy_nlp.sentencewalk(line, *nlp_args, N_ECHO_WALKS)
             BaseThread(target=robot_speech_echoes, args=[speech_echoes_arr]).start()
 
-    file_index += 1

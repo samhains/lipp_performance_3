@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 146.0, 145.0, 1327.0, 654.0 ],
+		"rect" : [ 222.0, 152.0, 1175.0, 581.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -124,7 +124,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 2038.281481, "ticks" ],
+						"originallength" : [ 2037.985185, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -171,7 +171,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 41.600002, 200.800003, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "0"
+					"text" : "3"
 				}
 
 			}
@@ -295,7 +295,7 @@
 				"box" : 				{
 					"autopopulate" : 1,
 					"id" : "obj-1",
-					"items" : "0.wav",
+					"items" : [ "0.wav", ",", "1.wav", ",", "2.wav", ",", "3.wav" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,

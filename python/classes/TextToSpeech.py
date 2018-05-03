@@ -1,10 +1,9 @@
 from classes.BaseThread import BaseThread as Parent
-from utility  import *
-import numpy as np
 import random
 import time
 import wave
 import boto3
+import os, os.path
 
 client = boto3.client('polly')
 
@@ -28,8 +27,15 @@ class TextToSpeech(Parent):
             'Tatyana', 'Astrid', 'Filiz', 'Vicki'
         ]
 
+    def _get_file_index(self):
+        i = len([name for name in os.listdir('../audio/')])
+        print("index", i)
+        return i
+
+
     def _save(self, text, sound_data):
         self.text = text
+        self.file_index = self._get_file_index()
         fname = "../audio/{}.wav".format(self.file_index)
         data = wave.open(fname, 'w')
         data.setparams((1, 2, 16200, 0, 'NONE', 'NONE'))
