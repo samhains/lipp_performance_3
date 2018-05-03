@@ -8,16 +8,17 @@ from classes.GifScraper import GifScraper
 from classes.GoogleScraper import GoogleScraper
 from classes.BaseThread import BaseThread
 from classes.TextToSpeech import TextToSpeech
-import shutil
 
 from pygame import mixer
 import spacy_nlp
 import threading
+from pythonosc import udp_client
+client = udp_client.SimpleUDPClient("localhost", 7402)
 
 threadLock = threading.Lock()
 ROBOT_SPEECH_ECHO_DELAY = 8
 N_ECHO_WALKS = 3
-TOGGLE_SCRAPE = False
+TOGGLE_SCRAPE = True
 TOGGLE_NLP = True
 TOGGLE_SAVE = True
 TOGGLE_DELETE_FILES = True
@@ -25,7 +26,7 @@ TOGGLE_DELETE_FILES = True
 if TOGGLE_DELETE_FILES:
     audio_path = "../audio/"
     if os.path.exists(audio_path):
-        filelist = [ f for f in os.listdir(audio_path)]
+        filelist = [f for f in os.listdir(audio_path)]
         for f in filelist:
             os.remove(os.path.join(audio_path, f))
     else:
@@ -54,7 +55,7 @@ def robot_speech_echoes(speech_echoes_arr):
         TextToSpeech(mixer, save=TOGGLE_SAVE, sleep=sleep).run_(line)
 
 
-def run(line, client=None):
+def run(line):
     mixer.init(channels=1, frequency=12100)
 
     line = line.rstrip(string.punctuation).strip().lower()
