@@ -1,4 +1,4 @@
-import os
+import os, os.path
 from utility import *
 import time
 
@@ -12,11 +12,13 @@ import shutil
 
 from pygame import mixer
 import spacy_nlp
+import threading
 
-ROBOT_SPEECH_ECHO_DELAY = 0
-N_ECHO_WALKS = 0
+threadLock = threading.Lock()
+ROBOT_SPEECH_ECHO_DELAY = 8
+N_ECHO_WALKS = 3
 TOGGLE_SCRAPE = False
-TOGGLE_NLP = False
+TOGGLE_NLP = True
 TOGGLE_SAVE = True
 TOGGLE_DELETE_FILES = True
 
@@ -30,12 +32,13 @@ if TOGGLE_DELETE_FILES:
             os.remove(os.path.join(audio_path, f))
     else:
         os.mkdir(audio_path)
+print("files deleted")
 
 max_client = udp_client.SimpleUDPClient("localhost", 7405)
 
 if TOGGLE_NLP:
     nlp_args = spacy_nlp.prepare_nlp()
-
+    print("finished loading nlp models")
 
 def scrape_line(query, dir_name):
     query = query.strip().lower()
@@ -45,10 +48,15 @@ def scrape_line(query, dir_name):
 
 
 def robot_speech_echoes(speech_echoes_arr):
-    time.sleep(ROBOT_SPEECH_ECHO_DELAY)
+    global file_index
+    global threadLock
+
     for i in range(N_ECHO_WALKS):
-        sleep = i*ROBOT_SPEECH_ECHO_DELAY
+        sleep = i*ROBOT_SPEECH_ECHO_DELAY + ROBOT_SPEECH_ECHO_DELAY
         line = speech_echoes_arr[i]
+        with threadLock:
+            file_index += 1
+            print("findex",i, file_index)
         TextToSpeech(mixer, save=TOGGLE_SAVE, sleep=sleep, file_index=file_index).run_(line)
 
 
@@ -58,26 +66,25 @@ def run(line, client=None):
 
     line = line.rstrip(string.punctuation).strip().lower()
 
-    s_time = N_ECHO_WALKS*ROBOT_SPEECH_ECHO_DELAY+ROBOT_SPEECH_ECHO_DELAY+5
-
     if TOGGLE_SCRAPE and client is not None:
         dir_str = make_url_str(line)
         dir_name = "../images/"+dir_str
         if os.path.exists(dir_name):
             client.send_message("/swap", line+":"+dir_str)
-            TextToSpeech(mixer, save=TOGGLE_SAVE, file_index=file_index).run_(line)
 
         else:
             scrape_line(line, dir_name)
             if client:
                 client.send_message("/swap", line+":"+dir_str)
-            TextToSpeech(mixer, save=TOGGLE_SAVE, file_index=file_index).run_(line)
+
+        TextToSpeech(mixer, save=TOGGLE_SAVE, file_index=file_index).run_(line)
     else:
+
         TextToSpeech(mixer, save=TOGGLE_SAVE, file_index=file_index).run_(line)
 
-    if TOGGLE_NLP:
-        speech_echoes_arr = spacy_nlp.sentencewalk(line, *nlp_args, N_ECHO_WALKS)
-        BaseThread(target=robot_speech_echoes, args=[speech_echoes_arr]).start()
+        if TOGGLE_NLP:
+            time.sleep(ROBOT_SPEECH_ECHO_DELAY)
+            speech_echoes_arr = spacy_nlp.sentencewalk(line, *nlp_args, N_ECHO_WALKS)
+            BaseThread(target=robot_speech_echoes, args=[speech_echoes_arr]).start()
 
     file_index += 1
-    # time.sleep(s_time)

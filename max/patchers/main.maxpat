@@ -56,7 +56,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 160.800003, 46.399998, 122.0, 22.0 ],
+					"patching_rect" : [ 145.800003, 80.0, 122.0, 22.0 ],
 					"style" : "",
 					"text" : "receive~ robot_voice"
 				}
