@@ -2,7 +2,7 @@
 	"name" : "max",
 	"version" : 1,
 	"creationdate" : 3608127515,
-	"modificationdate" : 3608199280,
+	"modificationdate" : 3608200302,
 	"viewrect" : [ 703.0, 184.0, 802.0, 689.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -27,11 +27,6 @@
 			}
 ,
 			"launch_control.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"pattrtest.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

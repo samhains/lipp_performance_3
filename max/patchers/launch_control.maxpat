@@ -58,7 +58,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 783.250061, 269.600006, 99.0, 22.0 ],
-					"presentation_rect" : [ 946.0, 260.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "scale 0 127 0. 1."
 				}
@@ -127,7 +126,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 506.850006, 588.799988, 51.0, 36.0 ],
 					"style" : "",
-					"text" : "0.543307"
+					"text" : "0.637795"
 				}
 
 			}
@@ -1370,7 +1369,9 @@
 				}
 
 			}
- ]
+ ],
+		"dependency_cache" : [  ],
+		"autosave" : 0
 	}
 
 }
