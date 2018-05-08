@@ -18,7 +18,7 @@ client = udp_client.SimpleUDPClient("localhost", 7400)
 
 threadLock = threading.Lock()
 ROBOT_SPEECH_ECHO_DELAY = 8
-N_ECHO_WALKS = 2
+N_ECHO_WALKS = 3
 N_GOOGLE_IMAGES = 30
 N_GIFS = 10
 
@@ -53,6 +53,7 @@ def robot_speech_echoes(speech_echoes_arr):
     for i in range(N_ECHO_WALKS):
         sleep = i*ROBOT_SPEECH_ECHO_DELAY + ROBOT_SPEECH_ECHO_DELAY
         line = speech_echoes_arr[i]
+        client.send_message("/text", line)
         TextToSpeech(mixer, save=TOGGLE_SAVE, sleep=sleep).run_(line)
     print("robot echoes finish")
 
@@ -66,7 +67,7 @@ def run(line):
         dir_str = make_url_str(line)
         dir_name = "../images/"+dir_str
         if os.path.exists(dir_name):
-            time.sleep(4)
+            time.sleep(7)
             client.send_message("/swap", line+":"+dir_str)
 
         else:
@@ -79,8 +80,8 @@ def run(line):
 
         TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
 
-        if TOGGLE_NLP:
-            time.sleep(ROBOT_SPEECH_ECHO_DELAY)
-            speech_echoes_arr = spacy_nlp.sentencewalk(line, *nlp_args, N_ECHO_WALKS)
-            BaseThread(target=robot_speech_echoes, args=[speech_echoes_arr]).start()
+    if TOGGLE_NLP:
+        time.sleep(ROBOT_SPEECH_ECHO_DELAY)
+        speech_echoes_arr = spacy_nlp.sentencewalk(line, *nlp_args, N_ECHO_WALKS)
+        BaseThread(target=robot_speech_echoes, args=[speech_echoes_arr]).start()
 

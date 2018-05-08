@@ -129,6 +129,7 @@ def listen_print_loop(responses):
             cs_response = transcript + overwrite_chars
             print(cs_response)
             text_to_speech.run(cs_response)
+            break
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
@@ -164,8 +165,8 @@ def main():
         try:
             listen_print_loop(responses)
         except google.cloud.exceptions._Rendezvous as e:
-            print("running main again")
-            main()
+            print("END")
+            # main()
 
 def run():
     try:

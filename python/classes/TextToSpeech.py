@@ -29,7 +29,7 @@ class TextToSpeech(Parent):
 
     def _get_file_index(self):
         i = len([name for name in os.listdir('../audio/')])
-        return i
+        return "{0:0>3}".format(i)
 
 
     def _save(self, text, sound_data):
