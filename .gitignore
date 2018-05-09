@@ -8,3 +8,5 @@ audio
 .ipynb_checkpoints
 python/.idea
 td/Backup
+.idea
+*.xml

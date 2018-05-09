@@ -2,8 +2,8 @@
 	"name" : "max",
 	"version" : 1,
 	"creationdate" : 3608127515,
-	"modificationdate" : 3608538717,
-	"viewrect" : [ 1238.0, 275.0, 395.0, 571.0 ],
+	"modificationdate" : 3608641010,
+	"viewrect" : [ 1242.0, 131.0, 494.0, 722.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -31,12 +31,17 @@
 				"local" : 1
 			}
 ,
+			"trigger_audio.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"launch_control.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"trigger_audio.maxpat" : 			{
+			"random_sample.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
