@@ -1,0 +1,23 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "ValhallaRoom",
+	"origin" : "ValhallaRoom.dll",
+	"type" : "VST",
+	"subtype" : "AudioEffect",
+	"embed" : 0,
+	"snapshot" : 	{
+		"pluginname" : "ValhallaRoom.dll",
+		"plugindisplayname" : "ValhallaRoom",
+		"pluginsavedname" : "ValhallaRoom",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"sliderorder" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ],
+		"slidervisibility" : [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+		"blob" : "734.CMlaKA....fQPMDZ....AHUc00F.ATP..............................................HfnVMjLgjo....OVEFanEFarElTu8Vaf.Ga0cVZtYUYxMWZu4VOhDiK03RLh.BbxU1bkQmSg0VY8HxTsEFarETahkVYtMVYh.RaogWOhDiHf.mbkQVYrEVd8HBLt.iM3DSN4jSN4XyLvPSMwHCLxHBHjU1XgkWOh.iKyPCLvPCLvHCNvjSMxPSMyXiHffTZmg1P0QWOh.iKvHyM0DiM2bCN0TCNzjiL1XSLh.RYgIGa4wTXzUVSogWOh.iHfvVXzU1TooWY8HBLtHCL4jSN4jSNyPCMyPCN4.yMh.BagQWYCI2ayMWOh.iK4HCLv.CLvDiM1fSNy.CL0PiHfvVXzUVSuQlTgQWY8HBLtDiL0HSMxTiL4jyM3bSMxDCMh.BagQWYM8FYDUFbzgVOh.iHfHEUBE1by0TcrQWZvwVd8HBLtHSMyLyLyLyLvDSMzPSL3jSMh.hTTg0a1Ulb8HBLt.iM4XSN1jyMvHCNyjCN0DyL3HBHRQERocFZMUGazkFbrkWOh.iK3LyLyLyLyDyLzXSMwDCNzDiHfHEUHk1Yng0a1Ulb8HBLtHyL2TCNyfSNvTSM2HCN4DiLh.RYgIGa4MUZ5UVOh.iKvDSNvDSNvDCN3TCN1bSLwfCNh.RYgIGa4MjbuM2b8HBLtTCMv.CLv.iLwPSM2XyMxDiLh.RYgIGa40zajIUXzUVOh.iKx.iMvXCL1.yLxXCL4jyL4XiHfTVXxwVdM8FYDUFbzgVOh.iHfTVXxwVdSUlaj0iHvHBHjklYlU2bo8la8HBLtLCM4jSN4jSNz.yL4TyL0TiLh.Bc4AWY8HBLtLyLyLyLyLCMyHiM2PCMvfiHfzVZ3wzaisVOh.iHfTWZWkFYzgVOhbyL0HBH0kFRkk1YnQWOhPiMvHxK9.."
+	}
+
+}

@@ -1,0 +1,23 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "ValhallaShimmer",
+	"origin" : "ValhallaShimmer.dll",
+	"type" : "VST",
+	"subtype" : "AudioEffect",
+	"embed" : 0,
+	"snapshot" : 	{
+		"pluginname" : "ValhallaShimmer.dll",
+		"plugindisplayname" : "ValhallaShimmer",
+		"pluginsavedname" : "ValhallaShimmer",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"sliderorder" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ],
+		"slidervisibility" : [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+		"blob" : "409.CMlaKA....fQPMDZ....ALGZsIG.A.P.....HHDagM1ZH8FakA...........................DPWVMjLgLU....OMkETLU0QI4zTEQEUI4zQSABbrU2Yo4lUkI2bo8la8HRLh.xX0Imbk4FcPI2amIWXs0iHvHBHvElbg0VYzUlbvziHvHBHvElbg0VYzUlbwziHwHBHvElbg0VYzUlbxziHv3BMy.CLv.CLvbiHf.WXxEVakQWYxMSOh.iK4DSNwjSL4TyMh.BbgIWXsUFckIGM8HBLtXiLv.CLv.CL0HBHvElbg0VYzUlb0ziHvHBHvElbg0VYzUlb1ziHv3RMy.iLvDyLwXiHf.WXxEVakQWYxcSOh.iKw.CLv.CLv.SLh.BbgIWXsUFckIGN8HBLtLCLv.CLv.SLxHBHvElbg0VYzUlb4ziHv3RMh.BbgIWXsUFckIWLvziHv3BNv.CLv.CLwHiHf.WXxEVakQWYxESL8HRLh.RcocUZjQGZ8HhM4PiHfTWZHUVZmgFc8HhL2TiHu3C..."
+	}
+
+}
