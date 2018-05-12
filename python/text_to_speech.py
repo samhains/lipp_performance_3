@@ -23,7 +23,7 @@ N_GOOGLE_IMAGES = 30
 N_GIFS = 10
 
 TOGGLE_SCRAPE = True
-TOGGLE_NLP = True
+TOGGLE_NLP = False
 TOGGLE_SAVE = True
 TOGGLE_DELETE_FILES = True
 
@@ -56,6 +56,11 @@ def robot_speech_echoes(speech_echoes_arr):
         client.send_message("/text", line)
         TextToSpeech(mixer, save=TOGGLE_SAVE, sleep=sleep).run_(line)
     print("robot echoes finish")
+
+
+def retrieve_name(name):
+    line = "Thankyou {}. We would like to take a moment to get up to speed with you. What has been on your mind lately?".format(name)
+    TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
 
 
 def run(line):

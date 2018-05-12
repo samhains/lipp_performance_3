@@ -2,14 +2,17 @@ from pythonosc import dispatcher
 from pythonosc import osc_server
 import microphone_server
 
-TOGGLE_PERFORMANCE = False
-
 def rb1(*args):
-    global TOGGLE_PERFORMANCE
     val = args[-1]
-    if val == 1.0 and TOGGLE_PERFORMANCE is not True:
+    if val == 1.0:
         print("Starting performance")
         microphone_server.run()
+
+def rb2(*args):
+    val = args[-1]
+    if val == 1.0:
+        print("Starting performance")
+        microphone_server.run(retrieve_name=True)
 
 def s1(*args):
     val = args[-1]
@@ -18,6 +21,7 @@ def s1(*args):
 
 dispatcher = dispatcher.Dispatcher()
 dispatcher.map("/rb1", rb1 )
+dispatcher.map("/rb2", rb2 )
 dispatcher.map("/s1", s1 )
 
 server = osc_server.ThreadingOSCUDPServer(("localhost", 7406), dispatcher)

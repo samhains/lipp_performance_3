@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 35.0, 99.0, 1848.0, 896.0 ],
+		"rect" : [ 43.0, 99.0, 1848.0, 896.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -251,18 +251,6 @@
 					"patching_rect" : [ 1653.400024, 1045.300049, 120.0, 22.0 ],
 					"style" : "",
 					"text" : "if $i1 == 5 then bang"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-77",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patching_rect" : [ 764.5, 232.600006, 100.0, 22.0 ],
-					"style" : "",
-					"text" : "spout.maxpat"
 				}
 
 			}
@@ -2945,14 +2933,14 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-2::obj-48::obj-8" : [ "vst~[1]", "vst~[1]", 0 ],
+			"obj-69" : [ "live.gain~[4]", "live.gain~", 0 ],
+			"obj-2::obj-7" : [ "live.gain~[3]", "live.gain~[2]", 0 ],
+			"obj-2::obj-48::obj-6" : [ "vst~", "vst~", 0 ],
 			"obj-2::obj-6" : [ "live.gain~[2]", "live.gain~[2]", 0 ],
 			"obj-71" : [ "live.gain~[5]", "live.gain~", 0 ],
-			"obj-2::obj-48::obj-6" : [ "vst~", "vst~", 0 ],
 			"obj-84" : [ "vst~[2]", "vst~[2]", 0 ],
-			"obj-62" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-2::obj-7" : [ "live.gain~[3]", "live.gain~[2]", 0 ],
-			"obj-69" : [ "live.gain~[4]", "live.gain~", 0 ],
-			"obj-2::obj-48::obj-8" : [ "vst~[1]", "vst~[1]", 0 ]
+			"obj-62" : [ "live.gain~", "live.gain~", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -3047,18 +3035,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "spout.maxpat",
-				"bootpath" : "~/Desktop/touch/lipp_performance_3/max/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "karma~.mxe",
-				"type" : "iLaF"
-			}
-, 			{
-				"name" : "jit.gl.spoutreceiver.mxe",
 				"type" : "iLaF"
 			}
  ],
@@ -3129,8 +3106,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -3148,8 +3125,8 @@
 , 			{
 				"name" : "rsliderGold",
 				"default" : 				{
-					"bgcolor" : [ 0.764706, 0.592157, 0.101961, 1.0 ],
-					"color" : [ 0.646639, 0.821777, 0.854593, 1.0 ]
+					"color" : [ 0.646639, 0.821777, 0.854593, 1.0 ],
+					"bgcolor" : [ 0.764706, 0.592157, 0.101961, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
