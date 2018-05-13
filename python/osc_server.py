@@ -10,9 +10,17 @@ def rb1(*args):
 
 def rb2(*args):
     val = args[-1]
+    print("RB2")
     if val == 1.0:
         print("Starting performance")
         microphone_server.run(retrieve_name=True)
+
+def rb3(*args):
+    val = args[-1]
+    print("RB3")
+    # if val == 1.0:
+    #     print("Starting performance")
+    #     microphone_server.security_questions()
 
 def s1(*args):
     val = args[-1]

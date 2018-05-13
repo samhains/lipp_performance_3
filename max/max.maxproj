@@ -2,7 +2,7 @@
 	"name" : "max",
 	"version" : 1,
 	"creationdate" : -686839781,
-	"modificationdate" : -686160254,
+	"modificationdate" : -685901548,
 	"viewrect" : [ 1242.0, 131.0, 494.0, 722.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -41,12 +41,22 @@
 				"local" : 1
 			}
 ,
+			"spout.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"launch_control.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"spout.maxpat" : 			{
+			"random_question.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"osc_in.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -75,6 +85,10 @@
 			}
 ,
 			"greetings_traveller.mp3" : 			{
+				"kind" : "audiofile"
+			}
+,
+			"hello_sam_installation.wav" : 			{
 				"kind" : "audiofile"
 			}
 

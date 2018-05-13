@@ -14,6 +14,7 @@ import spacy_nlp
 import threading
 from pythonosc import udp_client
 client = udp_client.SimpleUDPClient("localhost", 7400)
+max_client = udp_client.SimpleUDPClient("localhost", 7499)
 
 
 threadLock = threading.Lock()
@@ -22,10 +23,10 @@ N_ECHO_WALKS = 3
 N_GOOGLE_IMAGES = 30
 N_GIFS = 10
 
-TOGGLE_SCRAPE = True
+TOGGLE_SCRAPE = False
 TOGGLE_NLP = False
 TOGGLE_SAVE = True
-TOGGLE_DELETE_FILES = True
+TOGGLE_DELETE_FILES = False
 
 if TOGGLE_DELETE_FILES:
     audio_path = "../audio/"
@@ -59,9 +60,10 @@ def robot_speech_echoes(speech_echoes_arr):
 
 
 def retrieve_name(name):
-    line = "Thankyou {}. We would like to take a moment to get up to speed with you. What has been on your mind lately?".format(name)
+    line = "Thankyou {}.".format(name)
+    max_client.send_message("/test", name)
+    print("seinding message")
     TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
-
 
 def run(line):
     mixer.init(channels=1, frequency=12100)
