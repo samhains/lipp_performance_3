@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 68.0, 122.0, 1085.0, 480.0 ],
+		"rect" : [ 68.0, 174.0, 1085.0, 428.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -55,7 +55,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 608.0, 350.0, 81.0, 22.0 ],
+					"patching_rect" : [ 604.0, 434.0, 81.0, 22.0 ],
 					"style" : "",
 					"text" : "s next_scene"
 				}
@@ -91,11 +91,11 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 511.150024, 204.399963, 94.0, 22.0 ],
+					"patching_rect" : [ 511.150024, 204.399963, 136.0, 22.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 957.900024, 99.0, 173.0, 22.0 ],
 					"style" : "",
-					"text" : "OSC-route /test"
+					"text" : "OSC-route /next_scene"
 				}
 
 			}

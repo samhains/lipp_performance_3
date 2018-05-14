@@ -21,12 +21,13 @@ threadLock = threading.Lock()
 ROBOT_SPEECH_ECHO_DELAY = 8
 N_ECHO_WALKS = 3
 N_GOOGLE_IMAGES = 30
+N_GOOGLE_IMAGES_MINIMAL = 10
 N_GIFS = 10
 
-TOGGLE_SCRAPE = False
+TOGGLE_SCRAPE = True
 TOGGLE_NLP = False
 TOGGLE_SAVE = True
-TOGGLE_DELETE_FILES = False
+TOGGLE_DELETE_FILES = True
 
 if TOGGLE_DELETE_FILES:
     audio_path = "../audio/"
@@ -48,6 +49,10 @@ def scrape_line(query, dir_name):
     GoogleScraper(N_GOOGLE_IMAGES).scrape(query, dir_name)
     GifScraper(N_GIFS).scrape(query, dir_name)
 
+def scrape_line_minimal(query, dir_name):
+    query = query.strip().lower()
+    os.makedirs(dir_name)
+    GoogleScraper(N_GOOGLE_IMAGES_MINIMAL).scrape(query, dir_name)
 
 def robot_speech_echoes(speech_echoes_arr):
     print("starting robot speech echoes")
@@ -61,8 +66,12 @@ def robot_speech_echoes(speech_echoes_arr):
 
 def retrieve_name(name):
     line = "Thankyou {}.".format(name)
-    max_client.send_message("/test", name)
-    print("seinding message")
+    print("thinkyou", name)
+    # dir_str = make_url_str(name)
+    # dir_name = "../images/"+dir_str
+    time.sleep(3)
+    max_client.send_message("/next_scene", name)
+    client.send_message("/username", name)
     TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
 
 def run(line):
@@ -82,10 +91,8 @@ def run(line):
             if client:
                 client.send_message("/swap", line+":"+dir_str)
 
-        TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
-    else:
-
-        TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
+    TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
+    max_client.send_message("/next_scene", line)
 
     if TOGGLE_NLP:
         time.sleep(ROBOT_SPEECH_ECHO_DELAY)

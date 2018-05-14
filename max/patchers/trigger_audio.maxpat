@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 353.0, 97.0, 1305.0, 908.0 ],
+		"rect" : [ 353.0, 149.0, 1305.0, 856.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -43,9 +43,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 550.0, 239.0, 69.0, 22.0 ],
+					"patching_rect" : [ 550.0, 239.0, 76.0, 22.0 ],
 					"style" : "",
-					"text" : "delay 6000"
+					"text" : "delay 10000"
 				}
 
 			}
@@ -81,7 +81,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 398.0, 695.0, 29.5, 22.0 ],
+					"patching_rect" : [ 552.0, 705.0, 29.5, 22.0 ],
 					"style" : "",
 					"text" : "1"
 				}
@@ -94,7 +94,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 386.5, 660.0, 24.0, 22.0 ],
+					"patching_rect" : [ 540.5, 670.0, 24.0, 22.0 ],
 					"style" : "",
 					"text" : "t b"
 				}
@@ -106,7 +106,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 435.0, 712.0, 37.0, 22.0 ],
+					"patching_rect" : [ 569.5, 790.0, 37.0, 22.0 ],
 					"style" : "",
 					"text" : "s rb2"
 				}
@@ -119,7 +119,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 355.0, 620.0, 48.0, 22.0 ],
+					"patching_rect" : [ 509.0, 630.0, 48.0, 22.0 ],
 					"style" : "",
 					"text" : "route 1"
 				}
@@ -132,7 +132,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 355.0, 584.0, 68.0, 22.0 ],
+					"patching_rect" : [ 509.0, 594.0, 68.0, 22.0 ],
 					"style" : "",
 					"text" : "route done"
 				}
@@ -287,7 +287,7 @@
 						"clips" : [ 							{
 								"filename" : "hello_sam_installation.wav",
 								"filekind" : "audiofile",
-								"selection" : [ 0.0, 1.0 ],
+								"selection" : [ 0.873786, 1.0 ],
 								"loop" : 0,
 								"content_state" : 								{
 									"play" : [ 0 ],
@@ -412,7 +412,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
-					"patching_rect" : [ 185.599991, 293.0, 261.0, 264.0 ],
+					"patching_rect" : [ 162.0, 306.0, 261.0, 264.0 ],
 					"style" : ""
 				}
 
@@ -426,7 +426,7 @@
 					"outlettype" : [ "", "", "", "", "", "" ],
 					"patching_rect" : [ 185.599991, 97.599998, 88.0, 22.0 ],
 					"style" : "",
-					"text" : "route 1 4 5 6 7"
+					"text" : "route 1 5 6 7 8"
 				}
 
 			}
@@ -555,7 +555,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-47", 0 ]
 				}
 
@@ -563,7 +563,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-47", 0 ]
 				}
 

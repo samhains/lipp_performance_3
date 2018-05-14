@@ -5,21 +5,21 @@ import microphone_server
 def rb1(*args):
     val = args[-1]
     if val == 1.0:
-        print("Starting performance")
+        print("Recording voice: rb1")
         microphone_server.run()
 
 def rb2(*args):
     val = args[-1]
     print("RB2")
     if val == 1.0:
-        print("Starting performance")
+        print("Recording voice: rb2")
         microphone_server.run(retrieve_name=True)
 
 def rb3(*args):
     val = args[-1]
     print("RB3")
     # if val == 1.0:
-    #     print("Starting performance")
+    #     print("Recording voice:")
     #     microphone_server.security_questions()
 
 def s1(*args):

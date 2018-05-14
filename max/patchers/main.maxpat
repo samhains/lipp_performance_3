@@ -542,14 +542,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-118",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1500.0, 498.0, 50.0, 36.0 ],
+					"patching_rect" : [ 1500.0, 498.0, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "0.206451"
+					"text" : "0."
 				}
 
 			}
@@ -1443,7 +1442,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1752.400024, 832.599976, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "5"
+					"text" : "0"
 				}
 
 			}
@@ -1525,7 +1524,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1541.400024, 834.299988, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "5"
+					"text" : "0"
 				}
 
 			}
