@@ -18,9 +18,9 @@ def rb2(*args):
 def rb3(*args):
     val = args[-1]
     print("RB3")
-    # if val == 1.0:
-    #     print("Recording voice:")
-    #     microphone_server.security_questions()
+    if val == 1.0:
+        print("Recording voice:")
+        microphone_server.run(next_scene=False)
 
 def s1(*args):
     val = args[-1]

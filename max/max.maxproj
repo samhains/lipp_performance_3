@@ -2,7 +2,7 @@
 	"name" : "max",
 	"version" : 1,
 	"creationdate" : -686839781,
-	"modificationdate" : -685901548,
+	"modificationdate" : -685875607,
 	"viewrect" : [ 1242.0, 131.0, 494.0, 722.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -57,6 +57,11 @@
 			}
 ,
 			"osc_in.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"scene_management.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

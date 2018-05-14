@@ -74,7 +74,7 @@ def retrieve_name(name):
     client.send_message("/username", name)
     TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
 
-def run(line):
+def run(line, next_scene=True):
     mixer.init(channels=1, frequency=12100)
 
     line = line.rstrip(string.punctuation).strip().lower()
@@ -92,7 +92,8 @@ def run(line):
                 client.send_message("/swap", line+":"+dir_str)
 
     TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
-    max_client.send_message("/next_scene", line)
+    if next_scene:
+        max_client.send_message("/next_scene", line)
 
     if TOGGLE_NLP:
         time.sleep(ROBOT_SPEECH_ECHO_DELAY)

@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 68.0, 174.0, 1085.0, 428.0 ],
+		"rect" : [ 130.0, 144.0, 1085.0, 428.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -78,9 +78,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 502.5, 333.0, 34.0, 22.0 ],
+					"patching_rect" : [ 502.5, 333.0, 99.0, 22.0 ],
 					"style" : "",
-					"text" : "print"
+					"text" : "print next_scene"
 				}
 
 			}

@@ -85,7 +85,7 @@ class MicrophoneStream(object):
 # [END audio_stream]
 
 
-def listen_print_loop(responses, retrieve_name=False):
+def listen_print_loop(responses, retrieve_name=False, next_scene=True):
     """Iterates through server responses and prints them.
     The responses passed is a generator that will block until a response
     is provided by the server.
@@ -131,6 +131,8 @@ def listen_print_loop(responses, retrieve_name=False):
             if retrieve_name:
                 print("retrieve name")
                 text_to_speech.retrieve_name(cs_response)
+            elif not next_scene:
+                text_to_speech.run(cs_response, next_scene=False)
             else:
                 text_to_speech.run(cs_response)
             break
@@ -144,7 +146,7 @@ def listen_print_loop(responses, retrieve_name=False):
             num_chars_printed = 0
 
 
-def main(retrieve_name=False):
+def main(retrieve_name=False, next_scene=True):
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
     language_code = 'en-US'  # a BCP-47 language tag
@@ -167,14 +169,14 @@ def main(retrieve_name=False):
 
         # Now, put the transcription responses to use.
         try:
-            listen_print_loop(responses, retrieve_name=retrieve_name)
+            listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene)
         except google.cloud.exceptions._Rendezvous as e:
             print("END")
             # main()
 
-def run(retrieve_name=False):
+def run(retrieve_name=False, next_scene=True):
     try:
-        main(retrieve_name=retrieve_name)
+        main(retrieve_name=retrieve_name, next_scene=next_scene)
         print("new main!")
     except KeyboardInterrupt:
         print('Interrupted')
