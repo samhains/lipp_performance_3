@@ -27,7 +27,7 @@ N_GIFS = 10
 TOGGLE_SCRAPE = True
 TOGGLE_NLP = False
 TOGGLE_SAVE = True
-TOGGLE_DELETE_FILES = True
+TOGGLE_DELETE_FILES = False
 
 if TOGGLE_DELETE_FILES:
     audio_path = "../audio/"
@@ -69,10 +69,10 @@ def retrieve_name(name):
     print("thinkyou", name)
     # dir_str = make_url_str(name)
     # dir_name = "../images/"+dir_str
-    time.sleep(3)
+    TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
+    time.sleep(4)
     max_client.send_message("/next_scene", name)
     client.send_message("/username", name)
-    TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
 
 def run(line, next_scene=True):
     mixer.init(channels=1, frequency=12100)

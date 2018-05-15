@@ -20,7 +20,7 @@ def rb3(*args):
     print("RB3")
     if val == 1.0:
         print("Recording voice:")
-        microphone_server.run(next_scene=False)
+        microphone_server.run(media_for_exit=True)
 
 def s1(*args):
     val = args[-1]
@@ -30,6 +30,7 @@ def s1(*args):
 dispatcher = dispatcher.Dispatcher()
 dispatcher.map("/rb1", rb1 )
 dispatcher.map("/rb2", rb2 )
+dispatcher.map("/rb3", rb3 )
 dispatcher.map("/s1", s1 )
 
 server = osc_server.ThreadingOSCUDPServer(("localhost", 7406), dispatcher)

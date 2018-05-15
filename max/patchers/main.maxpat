@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 43.0, 97.0, 920.0, 908.0 ],
+		"rect" : [ 34.0, 88.0, 1852.0, 908.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,32 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-101",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 758.0, 422.0, 94.0, 22.0 ],
+					"style" : "",
+					"text" : "r initialize_bang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-100",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 767.950012, 476.0, 29.5, 22.0 ],
+					"style" : "",
+					"text" : "1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-121",
 					"maxclass" : "newobj",
@@ -1626,7 +1652,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1752.400024, 832.599976, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "9"
+					"text" : "2"
 				}
 
 			}
@@ -1708,7 +1734,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1541.400024, 834.299988, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "9"
+					"text" : "2"
 				}
 
 			}
@@ -2496,6 +2522,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-84", 0 ],
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-68", 0 ],
+					"source" : [ "obj-100", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-100", 0 ],
+					"source" : [ "obj-101", 0 ]
 				}
 
 			}
@@ -3299,14 +3339,14 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-2::obj-48::obj-6" : [ "vst~", "vst~", 0 ],
-			"obj-2::obj-7" : [ "live.gain~[3]", "live.gain~[2]", 0 ],
-			"obj-62" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-69" : [ "live.gain~[4]", "live.gain~", 0 ],
 			"obj-84" : [ "vst~[2]", "vst~[2]", 0 ],
 			"obj-2::obj-6" : [ "live.gain~[2]", "live.gain~[2]", 0 ],
 			"obj-71" : [ "live.gain~[5]", "live.gain~", 0 ],
 			"obj-2::obj-48::obj-8" : [ "vst~[1]", "vst~[1]", 0 ],
-			"obj-69" : [ "live.gain~[4]", "live.gain~", 0 ]
+			"obj-2::obj-48::obj-6" : [ "vst~", "vst~", 0 ],
+			"obj-2::obj-7" : [ "live.gain~[3]", "live.gain~[2]", 0 ],
+			"obj-62" : [ "live.gain~", "live.gain~", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -3338,6 +3378,20 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "official_announcements.wav",
+				"bootpath" : "~/Desktop/touch/lipp_performance_3/audio_samples",
+				"patcherrelativepath" : "../../audio_samples",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "need_verification.wav",
+				"bootpath" : "~/Desktop/touch/lipp_performance_3/audio_samples",
+				"patcherrelativepath" : "../../audio_samples",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "247 echo.wav",
 				"bootpath" : "~/Desktop/touch/lipp_performance_3/audio_samples",
 				"patcherrelativepath" : "../../audio_samples",
@@ -3345,7 +3399,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "error_tone.wav",
+				"name" : "recallibration_needed.wav",
 				"bootpath" : "~/Desktop/touch/lipp_performance_3/audio_samples",
 				"patcherrelativepath" : "../../audio_samples",
 				"type" : "WAVE",
@@ -3412,6 +3466,18 @@
 				"bootpath" : "~/Desktop/touch/lipp_performance_3/max/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "serialosc.maxpat",
+				"bootpath" : "C74:/packages/Beap/patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "serialosc.js",
+				"bootpath" : "C74:/packages/Beap/patchers",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
@@ -3497,8 +3563,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

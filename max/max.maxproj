@@ -2,7 +2,7 @@
 	"name" : "max",
 	"version" : 1,
 	"creationdate" : -686839781,
-	"modificationdate" : -685875607,
+	"modificationdate" : -685783268,
 	"viewrect" : [ 1242.0, 131.0, 494.0, 722.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -41,16 +41,6 @@
 				"local" : 1
 			}
 ,
-			"spout.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"launch_control.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"random_question.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -61,7 +51,21 @@
 				"local" : 1
 			}
 ,
+			"serialosc.maxpat" : 			{
+				"kind" : "patcher"
+			}
+,
 			"scene_management.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"spout.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"launch_control.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -69,7 +73,7 @@
 		}
 ,
 		"media" : 		{
-			"hello_sam.wav" : 			{
+			"hello_sam_installation.wav" : 			{
 				"kind" : "audiofile"
 			}
 ,
@@ -93,9 +97,13 @@
 				"kind" : "audiofile"
 			}
 ,
-			"hello_sam_installation.wav" : 			{
+			"hello_sam.wav" : 			{
 				"kind" : "audiofile"
 			}
+
+		}
+,
+		"code" : 		{
 
 		}
 ,

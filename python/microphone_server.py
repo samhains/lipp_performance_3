@@ -18,6 +18,8 @@ import text_to_speech
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
 
+waiting_for_media = False
+
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
@@ -47,7 +49,7 @@ class MicrophoneStream(object):
 
         return self
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, type, value, tnetworkback):
         self._audio_stream.stop_stream()
         self._audio_stream.close()
         self.closed = True
@@ -85,7 +87,7 @@ class MicrophoneStream(object):
 # [END audio_stream]
 
 
-def listen_print_loop(responses, retrieve_name=False, next_scene=True):
+def listen_print_loop(responses, retrieve_name=False, next_scene=True, media_for_exit=False):
     """Iterates through server responses and prints them.
     The responses passed is a generator that will block until a response
     is provided by the server.
@@ -131,6 +133,13 @@ def listen_print_loop(responses, retrieve_name=False, next_scene=True):
             if retrieve_name:
                 print("retrieve name")
                 text_to_speech.retrieve_name(cs_response)
+            elif media_for_exit:
+                print("MEDIA FOR EXIT", cs_response)
+                if cs_response.lower().strip() == "media":
+                    print("MEDIAMEDIAMEDIA")
+                    global waiting_for_media
+                    waiting_for_media = False
+                    break
             elif not next_scene:
                 text_to_speech.run(cs_response, next_scene=False)
             else:
@@ -146,7 +155,7 @@ def listen_print_loop(responses, retrieve_name=False, next_scene=True):
             num_chars_printed = 0
 
 
-def main(retrieve_name=False, next_scene=True):
+def main(retrieve_name=False, next_scene=True, media_for_exit=False):
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
     language_code = 'en-US'  # a BCP-47 language tag
@@ -169,14 +178,18 @@ def main(retrieve_name=False, next_scene=True):
 
         # Now, put the transcription responses to use.
         try:
-            listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene)
+            global waiting_for_media
+            waiting_for_media = True
+            while media_for_exit and waiting_for_media:
+                listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
         except google.cloud.exceptions._Rendezvous as e:
             print("END")
-            # main()
+            if media_for_exit:
+                main(retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
 
-def run(retrieve_name=False, next_scene=True):
+def run(retrieve_name=False, next_scene=True, media_for_exit=False):
     try:
-        main(retrieve_name=retrieve_name, next_scene=next_scene)
+        main(retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
         print("new main!")
     except KeyboardInterrupt:
         print('Interrupted')
