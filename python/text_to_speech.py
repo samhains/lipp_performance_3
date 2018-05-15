@@ -25,9 +25,9 @@ N_GOOGLE_IMAGES_MINIMAL = 10
 N_GIFS = 10
 
 TOGGLE_SCRAPE = True
-TOGGLE_NLP = False
+TOGGLE_NLP = True
 TOGGLE_SAVE = True
-TOGGLE_DELETE_FILES = False
+TOGGLE_DELETE_FILES = True
 
 if TOGGLE_DELETE_FILES:
     audio_path = "../audio/"
@@ -66,13 +66,13 @@ def robot_speech_echoes(speech_echoes_arr):
 
 def retrieve_name(name):
     line = "Thankyou {}.".format(name)
-    print("thinkyou", name)
+    print("thankyou", name)
     # dir_str = make_url_str(name)
     # dir_name = "../images/"+dir_str
+    client.send_message("/username", name)
     TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
     time.sleep(4)
     max_client.send_message("/next_scene", name)
-    client.send_message("/username", name)
 
 def run(line, next_scene=True):
     mixer.init(channels=1, frequency=12100)

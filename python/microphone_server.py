@@ -11,6 +11,7 @@ from google.cloud.speech import types
 from six.moves import queue
 
 import text_to_speech
+from pythonosc import udp_client
 
 # [END import_libraries]
 
@@ -20,6 +21,7 @@ CHUNK = int(RATE / 10)  # 100ms
 
 waiting_for_media = False
 
+max_client = udp_client.SimpleUDPClient("localhost", 7499)
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
@@ -131,14 +133,12 @@ def listen_print_loop(responses, retrieve_name=False, next_scene=True, media_for
             cs_response = transcript + overwrite_chars
             print(cs_response)
             if retrieve_name:
-                print("retrieve name")
                 text_to_speech.retrieve_name(cs_response)
             elif media_for_exit:
-                print("MEDIA FOR EXIT", cs_response)
                 if cs_response.lower().strip() == "media":
-                    print("MEDIAMEDIAMEDIA")
                     global waiting_for_media
                     waiting_for_media = False
+                    max_client.send_message("/next_scene", "media")
                     break
             elif not next_scene:
                 text_to_speech.run(cs_response, next_scene=False)
@@ -178,13 +178,16 @@ def main(retrieve_name=False, next_scene=True, media_for_exit=False):
 
         # Now, put the transcription responses to use.
         try:
-            global waiting_for_media
-            waiting_for_media = True
-            while media_for_exit and waiting_for_media:
+            if media_for_exit:
+                global waiting_for_media
+                waiting_for_media = True
+                while media_for_exit and waiting_for_media:
+                    listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
+            else:
                 listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
         except google.cloud.exceptions._Rendezvous as e:
             print("END")
-            if media_for_exit:
+            if waiting_for_media:
                 main(retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
 
 def run(retrieve_name=False, next_scene=True, media_for_exit=False):
