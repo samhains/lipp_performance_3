@@ -18,8 +18,9 @@ from pythonosc import udp_client
 # Audio recording parameters
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
+NEXT_SCENE_WORDS = ["media", "initialize system", "initialize", "end", "end announcement", "and announcement", "and none smnet", "initialized system", "initialized"]
 
-waiting_for_media = False
+waiting_for_word = False
 
 max_client = udp_client.SimpleUDPClient("localhost", 7499)
 
@@ -89,7 +90,7 @@ class MicrophoneStream(object):
 # [END audio_stream]
 
 
-def listen_print_loop(responses, retrieve_name=False, next_scene=True, media_for_exit=False):
+def listen_print_loop(responses, retrieve_name=False, next_scene=True, word_for_next_scene=False):
     """Iterates through server responses and prints them.
     The responses passed is a generator that will block until a response
     is provided by the server.
@@ -134,11 +135,15 @@ def listen_print_loop(responses, retrieve_name=False, next_scene=True, media_for
             print(cs_response)
             if retrieve_name:
                 text_to_speech.retrieve_name(cs_response)
-            elif media_for_exit:
-                if cs_response.lower().strip() == "media":
-                    global waiting_for_media
-                    waiting_for_media = False
-                    max_client.send_message("/next_scene", "media")
+                print("finished running name")
+                break
+
+            elif word_for_next_scene:
+                print(cs_response.lower().strip())
+                if cs_response.lower().strip() in NEXT_SCENE_WORDS:
+                    global waiting_for_word
+                    waiting_for_word = False
+                    max_client.send_message("/next_scene", "next_scene_by_word")
                     break
             elif not next_scene:
                 text_to_speech.run(cs_response, next_scene=False)
@@ -155,7 +160,7 @@ def listen_print_loop(responses, retrieve_name=False, next_scene=True, media_for
             num_chars_printed = 0
 
 
-def main(retrieve_name=False, next_scene=True, media_for_exit=False):
+def main(retrieve_name=False, next_scene=True, word_for_next_scene=False):
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
     language_code = 'en-US'  # a BCP-47 language tag
@@ -176,23 +181,24 @@ def main(retrieve_name=False, next_scene=True, media_for_exit=False):
 
         responses = client.streaming_recognize(streaming_config, requests)
 
+        global waiting_for_word
         # Now, put the transcription responses to use.
         try:
-            if media_for_exit:
-                global waiting_for_media
-                waiting_for_media = True
-                while media_for_exit and waiting_for_media:
-                    listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
+            if word_for_next_scene:
+                waiting_for_word = True
+                while word_for_next_scene and waiting_for_word:
+                    listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
             else:
-                listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
+                listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
         except google.cloud.exceptions._Rendezvous as e:
             print("END")
-            if waiting_for_media:
-                main(retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
+            if waiting_for_word and waiting_for_word:
+                print("running again")
+                main(retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
 
-def run(retrieve_name=False, next_scene=True, media_for_exit=False):
+def run(retrieve_name=False, next_scene=True, word_for_next_scene=False):
     try:
-        main(retrieve_name=retrieve_name, next_scene=next_scene, media_for_exit=media_for_exit)
+        main(retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
         print("new main!")
     except KeyboardInterrupt:
         print('Interrupted')

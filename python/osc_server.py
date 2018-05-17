@@ -4,27 +4,25 @@ import microphone_server
 
 def rb1(*args):
     val = args[-1]
+    print("RB1, starting default", val)
     if val == 1.0:
-        print("Recording voice: rb1")
         microphone_server.run()
 
 def rb2(*args):
     val = args[-1]
-    print("RB2")
+    print("RB2, starting retrieve_name", val)
     if val == 1.0:
-        print("Recording voice: rb2")
         microphone_server.run(retrieve_name=True)
 
 def rb3(*args):
     val = args[-1]
-    print("RB3")
+    print("RB3, starting word_for_next_scene", val)
     if val == 1.0:
-        print("Recording voice:")
-        microphone_server.run(media_for_exit=True)
+        microphone_server.run(word_for_next_scene=True)
 
 def s1(*args):
     val = args[-1]
-    print(val)
+    print("Scene number:", val)
 
 
 dispatcher = dispatcher.Dispatcher()

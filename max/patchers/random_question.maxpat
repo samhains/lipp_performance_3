@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 43.0, 97.0, 1305.0, 908.0 ],
+		"rect" : [ 43.0, 92.0, 1316.0, 900.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 400.5, 721.0, 34.0, 22.0 ],
-					"presentation_rect" : [ 445.0, 765.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "gate"
 				}
@@ -58,7 +57,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 472.0, 652.0, 268.0, 22.0 ],
-					"presentation_rect" : [ 452.0, 721.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "if ($i1 == 4) || ($i1 ==5) || ($i1 == 6) then 1 else 0"
 				}
@@ -73,7 +71,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 20.0, 178.0, 50.0, 22.0 ],
 					"style" : "",
-					"text" : "1"
+					"text" : "0"
 				}
 
 			}
@@ -233,7 +231,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 2217.657471, "ticks" ],
+						"originallength" : [ 2692.686035, "ticks" ],
 						"originaltempo" : 120.000015,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -255,7 +253,7 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 512.0, 356.0, 302.0, 36.0 ],
 					"style" : "",
-					"text" : "C:/Users/samhains/Desktop/touch/lipp_performance_3/max/media/7.wav"
+					"text" : "C:/Users/samhains/Desktop/touch/lipp_performance_3/max/questions/31.wav"
 				}
 
 			}
@@ -295,7 +293,7 @@
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 415.0, 195.0, 223.0, 22.0 ],
-					"prefix" : "C:/Users/samhains/Desktop/touch/lipp_performance_3/max/media/",
+					"prefix" : "C:/Users/samhains/Desktop/touch/lipp_performance_3/max/questions/",
 					"style" : ""
 				}
 

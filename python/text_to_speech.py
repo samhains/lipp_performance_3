@@ -66,7 +66,6 @@ def robot_speech_echoes(speech_echoes_arr):
 
 def retrieve_name(name):
     line = "Thankyou {}.".format(name)
-    print("thankyou", name)
     # dir_str = make_url_str(name)
     # dir_name = "../images/"+dir_str
     client.send_message("/username", name)
