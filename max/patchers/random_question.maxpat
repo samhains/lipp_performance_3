@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
-			"architecture" : "x86",
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 8,
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 43.0, 92.0, 1316.0, 900.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 34.0, 77.0, 767.0, 809.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +45,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 400.5, 721.0, 34.0, 22.0 ],
-					"style" : "",
 					"text" : "gate"
 				}
 
@@ -57,7 +57,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 472.0, 652.0, 268.0, 22.0 ],
-					"style" : "",
 					"text" : "if ($i1 == 4) || ($i1 ==5) || ($i1 == 6) then 1 else 0"
 				}
 
@@ -70,7 +69,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 20.0, 178.0, 50.0, 22.0 ],
-					"style" : "",
 					"text" : "0"
 				}
 
@@ -83,7 +81,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 205.0, 234.0, 34.0, 22.0 ],
-					"style" : "",
 					"text" : "gate"
 				}
 
@@ -96,7 +93,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 129.0, 144.0, 268.0, 22.0 ],
-					"style" : "",
 					"text" : "if ($i1 == 4) || ($i1 ==5) || ($i1 == 6) then 1 else 0"
 				}
 
@@ -109,7 +105,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 49.0, 56.0, 31.0, 22.0 ],
-					"style" : "",
 					"text" : "r s1"
 				}
 
@@ -122,7 +117,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 213.0, 89.0, 139.0, 22.0 ],
-					"style" : "",
 					"text" : "r play_random_question"
 				}
 
@@ -135,7 +129,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 371.0, 658.0, 29.5, 22.0 ],
-					"style" : "",
 					"text" : "1"
 				}
 
@@ -147,7 +140,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 407.0, 775.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "s rb1"
 				}
 
@@ -160,7 +152,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 429.0, 126.0, 111.0, 22.0 ],
-					"style" : "",
 					"text" : "loadmess populate"
 				}
 
@@ -173,7 +164,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "" ],
 					"patching_rect" : [ 425.0, 474.0, 33.0, 22.0 ],
-					"style" : "",
 					"text" : "t 1 s"
 				}
 
@@ -184,8 +174,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 281.0, 794.0, 45.0, 45.0 ],
-					"style" : ""
+					"patching_rect" : [ 281.0, 794.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -197,7 +186,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 429.0, 441.0, 85.0, 22.0 ],
-					"style" : "",
 					"text" : "prepend open"
 				}
 
@@ -213,8 +201,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.295624, 335.0, 150.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 38.295623999999997, 335.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -231,14 +218,13 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 2692.686035, "ticks" ],
-						"originaltempo" : 120.000015,
+						"originallength" : [ 2765.543202835713601, "ticks" ],
+						"originaltempo" : 120.000014999999976,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
 						"timestretch" : [ 0 ]
 					}
 ,
-					"style" : "",
 					"text" : "sfplay~"
 				}
 
@@ -252,8 +238,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 512.0, 356.0, 302.0, 36.0 ],
-					"style" : "",
-					"text" : "C:/Users/samhains/Desktop/touch/lipp_performance_3/max/questions/31.wav"
+					"text" : "C:/Users/sam/Desktop/lipp_performance_3/max/questions/33.wav"
 				}
 
 			}
@@ -265,7 +250,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"patching_rect" : [ 231.0, 292.0, 51.0, 22.0 ],
-					"style" : "",
 					"text" : "random"
 				}
 
@@ -278,7 +262,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 305.0, 306.0, 87.0, 22.0 ],
-					"style" : "",
 					"text" : "route populate"
 				}
 
@@ -293,8 +276,8 @@
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 415.0, 195.0, 223.0, 22.0 ],
-					"prefix" : "C:/Users/samhains/Desktop/touch/lipp_performance_3/max/questions/",
-					"style" : ""
+					"prefix" : "C:/Users/sam/Desktop/lipp_performance_3/max/questions/",
+					"showdotfiles" : 1
 				}
 
 			}
