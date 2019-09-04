@@ -11,6 +11,7 @@ from google.cloud.speech import types
 from six.moves import queue
 
 import text_to_speech
+
 from pythonosc import udp_client
 
 # [END import_libraries]
