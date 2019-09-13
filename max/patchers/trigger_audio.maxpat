@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 4,
-			"architecture" : "x86",
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 8,
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 43.0, 97.0, 1007.0, 908.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 34.0, 77.0, 1468.0, 809.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,13 +39,24 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 196.0, 209.0, 53.0, 22.0 ],
+					"text" : "trigger b"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-30",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 596.0, 166.0, 43.0, 22.0 ],
-					"style" : "",
 					"text" : "pause"
 				}
 
@@ -57,7 +69,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 442.0, 171.0, 29.5, 22.0 ],
-					"style" : "",
 					"text" : "8"
 				}
 
@@ -70,7 +81,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 403.25, 171.0, 29.5, 22.0 ],
-					"style" : "",
 					"text" : "7"
 				}
 
@@ -83,7 +93,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 355.25, 171.0, 29.5, 22.0 ],
-					"style" : "",
 					"text" : "6"
 				}
 
@@ -96,7 +105,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 528.25, 150.0, 29.5, 22.0 ],
-					"style" : "",
 					"text" : "0"
 				}
 
@@ -108,7 +116,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 340.0, 768.0, 117.0, 22.0 ],
-					"style" : "",
 					"text" : "send~ trigger_audio"
 				}
 
@@ -121,7 +128,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 321.25, 171.0, 29.5, 22.0 ],
-					"style" : "",
 					"text" : "5"
 				}
 
@@ -133,8 +139,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 220.849991, 167.0, 29.5, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 220.849990999999989, 167.0, 29.5, 22.0 ],
 					"text" : "3"
 				}
 
@@ -147,8 +152,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 368.0, 79.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 368.0, 79.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -160,7 +164,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 266.0, 167.0, 29.5, 22.0 ],
-					"style" : "",
 					"text" : "4"
 				}
 
@@ -172,8 +175,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 181.349991, 167.0, 29.5, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 181.349990999999989, 167.0, 29.5, 22.0 ],
 					"text" : "2"
 				}
 
@@ -185,8 +187,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 129.599991, 167.0, 29.5, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 129.599990999999989, 167.0, 29.5, 22.0 ],
 					"text" : "1"
 				}
 
@@ -199,7 +200,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 559.0, 209.0, 51.0, 22.0 ],
-					"style" : "",
 					"text" : "resume"
 				}
 
@@ -209,194 +209,202 @@
 					"clipheight" : 32.0,
 					"data" : 					{
 						"clips" : [ 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\hello_sam.wav",
+								"absolutepath" : "hello_sam.wav",
+								"filename" : "hello_sam.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.995146, 0.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
 , 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\official_announcements.wav",
+								"absolutepath" : "official_announcements.wav",
+								"filename" : "official_announcements.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.0, 1.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
 , 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\propaganda_audio.wav",
+								"absolutepath" : "propaganda_audio.wav",
+								"filename" : "propaganda_audio.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.956311, 0.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
 , 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\need_verification.wav",
+								"absolutepath" : "need_verification.wav",
+								"filename" : "need_verification.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.0, 1.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
 , 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\247 echo.wav",
+								"absolutepath" : "247 echo.wav",
+								"filename" : "247 echo.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.0, 1.0 ],
 								"loop" : 1,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
 , 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\recallibration_needed.wav",
+								"absolutepath" : "recallibration_needed.wav",
+								"filename" : "recallibration_needed.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.174757, 1.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
 , 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\recallibration.wav",
+								"absolutepath" : "recallibration.wav",
+								"filename" : "recallibration.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.0, 1.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
 , 							{
-								"filename" : "C:\\Users\\samhains\\Desktop\\touch\\lipp_performance_3\\audio_samples\\elevator.wav",
+								"absolutepath" : "elevator.wav",
+								"filename" : "elevator.wav",
 								"filekind" : "audiofile",
 								"selection" : [ 0.0, 1.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"originallengthms" : [ 0.0 ],
 									"pitchcorrection" : [ 0 ],
+									"followglobaltempo" : [ 0 ],
+									"originallengthms" : [ 0.0 ],
+									"speed" : [ 1.0 ],
+									"timestretch" : [ 0 ],
 									"quality" : [ "basic" ],
 									"play" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"slurtime" : [ 0.0 ],
 									"formant" : [ 1.0 ],
 									"formantcorrection" : [ 0 ],
-									"originaltempo" : [ 120.0 ],
-									"timestretch" : [ 0 ],
-									"basictuning" : [ 440 ],
 									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ],
 									"mode" : [ "basic" ],
-									"speed" : [ 1.0 ]
+									"originaltempo" : [ 120.0 ],
+									"basictuning" : [ 440 ],
+									"slurtime" : [ 0.0 ]
 								}
 
 							}
@@ -408,8 +416,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
-					"patching_rect" : [ 196.0, 299.0, 261.0, 264.0 ],
-					"style" : ""
+					"patching_rect" : [ 196.0, 299.0, 261.0, 264.0 ]
 				}
 
 			}
@@ -420,8 +427,7 @@
 					"numinlets" : 9,
 					"numoutlets" : 9,
 					"outlettype" : [ "", "", "", "", "", "", "", "", "" ],
-					"patching_rect" : [ 185.599991, 97.599998, 125.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 185.599990999999989, 97.599997999999999, 125.0, 22.0 ],
 					"text" : "route 1 2 3 4 7 8 9 10"
 				}
 
@@ -433,14 +439,20 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 324.599976, 35.200005, 31.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 324.599976000000026, 35.200004999999997, 31.0, 22.0 ],
 					"text" : "r s1"
 				}
 
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-18", 0 ]
@@ -570,7 +582,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-50", 0 ]
 				}
 
@@ -584,7 +596,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-18", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
