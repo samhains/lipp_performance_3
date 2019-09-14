@@ -490,7 +490,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 477.0, 252.0, 640.0, 480.0 ],
+						"rect" : [ 476.0, 251.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -738,7 +738,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 477.0, 252.0, 640.0, 480.0 ],
+						"rect" : [ 476.0, 251.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1753,7 +1753,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 43.0, 97.0, 1852.0, 908.0 ],
+						"rect" : [ 40.0, 83.0, 1468.0, 809.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2230,7 +2230,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-13",
@@ -2800,7 +2799,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 678.0, 453.0, 640.0, 480.0 ],
+						"rect" : [ 368.0, 323.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3081,7 +3080,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 122.0, 170.0, 837.0, 679.0 ],
+						"rect" : [ 122.0, 170.0, 838.0, 680.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3108,6 +3107,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-9",
@@ -3220,7 +3220,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 384.0, 525.0, 78.0, 22.0 ],
+									"patching_rect" : [ 384.0, 467.0, 78.0, 22.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 807.0, 351.0, 78.0, 22.0 ],
 									"text" : "metro 10000"
@@ -3247,7 +3247,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 367.5, 598.0, 103.0, 22.0 ],
+									"patching_rect" : [ 363.0, 580.0, 103.0, 22.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 827.0, 406.0, 103.0, 22.0 ],
 									"text" : "s is_error_screen"
@@ -3572,13 +3572,6 @@
 									"destination" : [ "obj-81", 0 ],
 									"order" : 1,
 									"source" : [ "obj-31", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-28", 0 ],
-									"source" : [ "obj-32", 0 ]
 								}
 
 							}

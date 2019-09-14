@@ -14,14 +14,12 @@ import spacy_nlp
 import threading
 from pythonosc import udp_client
 client = udp_client.SimpleUDPClient("localhost", 7400)
-max_client = udp_client.SimpleUDPClient("localhost", 7499)
 
 
 threadLock = threading.Lock()
 ROBOT_SPEECH_ECHO_DELAY = 8
 N_ECHO_WALKS = 3
 N_GOOGLE_IMAGES = 30
-N_GOOGLE_IMAGES_MINIMAL = 10
 N_GIFS = 10
 
 TOGGLE_SCRAPE = True
@@ -49,10 +47,6 @@ def scrape_line(query, dir_name):
     GoogleScraper(N_GOOGLE_IMAGES).scrape(query, dir_name)
     GifScraper(N_GIFS).scrape(query, dir_name)
 
-def scrape_line_minimal(query, dir_name):
-    query = query.strip().lower()
-    os.makedirs(dir_name)
-    GoogleScraper(N_GOOGLE_IMAGES_MINIMAL).scrape(query, dir_name)
 
 def robot_speech_echoes(speech_echoes_arr):
     print("starting robot speech echoes")
@@ -64,16 +58,7 @@ def robot_speech_echoes(speech_echoes_arr):
     print("robot echoes finish")
 
 
-def retrieve_name(name):
-    line = "Thankyou {}.".format(name)
-    # dir_str = make_url_str(name)
-    # dir_name = "../images/"+dir_str
-    client.send_message("/username", name)
-    TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
-    time.sleep(4)
-    max_client.send_message("/next_scene", name)
-
-def run(line, next_scene=True):
+def run(line):
     mixer.init(channels=1, frequency=12100)
 
     line = line.rstrip(string.punctuation).strip().lower()
@@ -90,9 +75,10 @@ def run(line, next_scene=True):
             if client:
                 client.send_message("/swap", line+":"+dir_str)
 
-    TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
-    if next_scene:
-        max_client.send_message("/next_scene", line)
+        TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
+    else:
+
+        TextToSpeech(mixer, save=TOGGLE_SAVE).run_(line)
 
     if TOGGLE_NLP:
         time.sleep(ROBOT_SPEECH_ECHO_DELAY)

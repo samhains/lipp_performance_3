@@ -12,18 +12,12 @@ from six.moves import queue
 
 import text_to_speech
 
-from pythonosc import udp_client
-
 # [END import_libraries]
 
 # Audio recording parameters
 RATE = 16000
 CHUNK = int(RATE / 10)  # 100ms
-NEXT_SCENE_WORDS = ["media", "initialize system", "initialize", "end", "end announcement", "and announcement", "and none smnet", "initialized system", "initialized"]
 
-waiting_for_word = False
-
-max_client = udp_client.SimpleUDPClient("localhost", 7499)
 
 class MicrophoneStream(object):
     """Opens a recording stream as a generator yielding the audio chunks."""
@@ -53,7 +47,7 @@ class MicrophoneStream(object):
 
         return self
 
-    def __exit__(self, type, value, tnetworkback):
+    def __exit__(self, type, value, traceback):
         self._audio_stream.stop_stream()
         self._audio_stream.close()
         self.closed = True
@@ -91,7 +85,7 @@ class MicrophoneStream(object):
 # [END audio_stream]
 
 
-def listen_print_loop(responses, retrieve_name=False, next_scene=True, word_for_next_scene=False):
+def listen_print_loop(responses):
     """Iterates through server responses and prints them.
     The responses passed is a generator that will block until a response
     is provided by the server.
@@ -134,22 +128,7 @@ def listen_print_loop(responses, retrieve_name=False, next_scene=True, word_for_
         else:
             cs_response = transcript + overwrite_chars
             print(cs_response)
-            if retrieve_name:
-                text_to_speech.retrieve_name(cs_response)
-                print("finished running name")
-                break
-
-            elif word_for_next_scene:
-                print(cs_response.lower().strip())
-                if cs_response.lower().strip() in NEXT_SCENE_WORDS:
-                    global waiting_for_word
-                    waiting_for_word = False
-                    max_client.send_message("/next_scene", "next_scene_by_word")
-                    break
-            elif not next_scene:
-                text_to_speech.run(cs_response, next_scene=False)
-            else:
-                text_to_speech.run(cs_response)
+            text_to_speech.run(cs_response)
             break
 
             # Exit recognition if any of the transcribed phrases could be
@@ -161,7 +140,7 @@ def listen_print_loop(responses, retrieve_name=False, next_scene=True, word_for_
             num_chars_printed = 0
 
 
-def main(retrieve_name=False, next_scene=True, word_for_next_scene=False):
+def main():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
     language_code = 'en-US'  # a BCP-47 language tag
@@ -182,24 +161,16 @@ def main(retrieve_name=False, next_scene=True, word_for_next_scene=False):
 
         responses = client.streaming_recognize(streaming_config, requests)
 
-        global waiting_for_word
         # Now, put the transcription responses to use.
         try:
-            if word_for_next_scene:
-                waiting_for_word = True
-                while word_for_next_scene and waiting_for_word:
-                    listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
-            else:
-                listen_print_loop(responses, retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
+            listen_print_loop(responses)
         except google.cloud.exceptions._Rendezvous as e:
             print("END")
-            if waiting_for_word and waiting_for_word:
-                print("running again")
-                main(retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
+            # main()
 
-def run(retrieve_name=False, next_scene=True, word_for_next_scene=False):
+def run():
     try:
-        main(retrieve_name=retrieve_name, next_scene=next_scene, word_for_next_scene=word_for_next_scene)
+        main()
         print("new main!")
     except KeyboardInterrupt:
         print('Interrupted')
