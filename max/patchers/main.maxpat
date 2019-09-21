@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 315.0, 84.0, 776.0, 793.0 ],
+		"rect" : [ 34.0, 86.0, 1465.0, 704.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,18 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-67",
+					"maxclass" : "slider",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 349.0, 37.0, 20.0, 140.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-90",
 					"maxclass" : "comment",
@@ -225,21 +237,21 @@
 								"selection" : [ 0.0, 1.0 ],
 								"loop" : 0,
 								"content_state" : 								{
-									"pitchcorrection" : [ 0 ],
-									"followglobaltempo" : [ 0 ],
-									"originallengthms" : [ 0.0 ],
-									"speed" : [ 1.0 ],
-									"timestretch" : [ 0 ],
-									"quality" : [ "basic" ],
-									"play" : [ 0 ],
-									"formant" : [ 1.0 ],
-									"formantcorrection" : [ 0 ],
-									"pitchshift" : [ 1.0 ],
-									"originallength" : [ 0.0, "ticks" ],
-									"mode" : [ "basic" ],
 									"originaltempo" : [ 120.0 ],
 									"basictuning" : [ 440 ],
-									"slurtime" : [ 0.0 ]
+									"originallengthms" : [ 0.0 ],
+									"pitchcorrection" : [ 0 ],
+									"formant" : [ 1.0 ],
+									"followglobaltempo" : [ 0 ],
+									"quality" : [ "basic" ],
+									"timestretch" : [ 0 ],
+									"formantcorrection" : [ 0 ],
+									"slurtime" : [ 0.0 ],
+									"mode" : [ "basic" ],
+									"speed" : [ 1.0 ],
+									"play" : [ 0 ],
+									"pitchshift" : [ 1.0 ],
+									"originallength" : [ 0.0, "ticks" ]
 								}
 
 							}
@@ -575,13 +587,13 @@
 					"presentation_rect" : [ 717.5, 388.949981999999977, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_mmax" : 6.0,
+							"parameter_initial" : [ 0.0 ],
 							"parameter_shortname" : "live.gain~",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 4,
 							"parameter_mmin" : -70.0,
-							"parameter_longname" : "live.gain~[5]",
-							"parameter_mmax" : 6.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_longname" : "live.gain~[5]"
 						}
 
 					}
@@ -616,13 +628,13 @@
 					"presentation_rect" : [ 633.700072999999975, 388.949981999999977, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_mmax" : 6.0,
+							"parameter_initial" : [ 0.0 ],
 							"parameter_shortname" : "live.gain~",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 4,
 							"parameter_mmin" : -70.0,
-							"parameter_longname" : "live.gain~[4]",
-							"parameter_mmax" : 6.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_longname" : "live.gain~[4]"
 						}
 
 					}
@@ -645,13 +657,13 @@
 					"presentation_rect" : [ 550.700072999999975, 388.949981999999977, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_mmax" : 6.0,
+							"parameter_initial" : [ 0.0 ],
 							"parameter_shortname" : "live.gain~",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 4,
 							"parameter_mmin" : -70.0,
-							"parameter_longname" : "live.gain~",
-							"parameter_mmax" : 6.0,
-							"parameter_initial" : [ 0.0 ]
+							"parameter_longname" : "live.gain~"
 						}
 
 					}
@@ -902,7 +914,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1634.40002400000003, 855.59997599999997, 50.0, 22.0 ],
-					"text" : "8"
+					"text" : "0"
 				}
 
 			}
@@ -980,7 +992,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1541.40002400000003, 834.299987999999985, 50.0, 22.0 ],
-					"text" : "8"
+					"text" : "0"
 				}
 
 			}
@@ -1028,10 +1040,10 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1588.600097999999889, 959.050048999999944, 119.200005000000004, 28.799986000000001 ],
+					"patching_rect" : [ 1581.600097999999889, 960.050048999999944, 119.200005000000004, 28.799986000000001 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 287.400055000000009, 101.150002000000001, 126.400002000000001, 28.799986000000001 ],
-					"size" : 12.0
+					"presentation_rect" : [ 298.300049000000001, 104.150002000000001, 126.400002000000001, 28.799986000000001 ],
+					"size" : 14.0
 				}
 
 			}
@@ -1168,7 +1180,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 391.510986000000003, 577.299987999999985, 256.0, 27.399972999999999 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 178.799987000000101, 475.950012000000015, 333.000030999999979, 27.999973000000001 ],
+					"presentation_rect" : [ 187.800049000000001, 468.950012000000015, 333.000030999999979, 27.999973000000001 ],
 					"size" : 1.0
 				}
 
@@ -2221,12 +2233,12 @@
  ],
 		"parameters" : 		{
 			"obj-62" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-2::obj-48::obj-8" : [ "vst~[1]", "vst~[1]", 0 ],
 			"obj-2::obj-6" : [ "live.gain~[2]", "live.gain~[2]", 0 ],
 			"obj-71" : [ "live.gain~[5]", "live.gain~", 0 ],
-			"obj-69" : [ "live.gain~[4]", "live.gain~", 0 ],
 			"obj-2::obj-48::obj-6" : [ "vst~", "vst~", 0 ],
 			"obj-2::obj-7" : [ "live.gain~[3]", "live.gain~[2]", 0 ],
+			"obj-69" : [ "live.gain~[4]", "live.gain~", 0 ],
+			"obj-2::obj-48::obj-8" : [ "vst~[1]", "vst~[1]", 0 ],
 			"parameterbanks" : 			{
 
 			}
@@ -2255,28 +2267,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hello_sam.wav",
-				"bootpath" : "~/Desktop/lipp_performance_3/max/media",
-				"patcherrelativepath" : "../media",
-				"type" : "WAVE",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "official_announcements.wav",
-				"bootpath" : "~/Desktop/lipp_performance_3/max/media",
-				"patcherrelativepath" : "../media",
-				"type" : "WAVE",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "propaganda_audio.wav",
-				"bootpath" : "~/Desktop/lipp_performance_3/max/media",
-				"patcherrelativepath" : "../media",
-				"type" : "WAVE",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "need_verification.wav",
+				"name" : "04_Technical_difficulties.wav",
 				"bootpath" : "~/Desktop/lipp_performance_3/max/media",
 				"patcherrelativepath" : "../media",
 				"type" : "WAVE",
@@ -2290,7 +2281,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "recallibration_needed.wav",
+				"name" : "09_alien_contact-1.wav",
+				"bootpath" : "~/Desktop/lipp_performance_3/max/media",
+				"patcherrelativepath" : "../media",
+				"type" : "WAVE",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "10_Technical_difficulties_Recallib_needed.wav",
 				"bootpath" : "~/Desktop/lipp_performance_3/max/media",
 				"patcherrelativepath" : "../media",
 				"type" : "WAVE",
@@ -2442,8 +2440,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
-					"fontsize" : [ 12.059008 ]
+					"fontsize" : [ 12.059008 ],
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -2461,8 +2459,8 @@
 , 			{
 				"name" : "rsliderGold",
 				"default" : 				{
-					"bgcolor" : [ 0.764706, 0.592157, 0.101961, 1.0 ],
-					"color" : [ 0.646639, 0.821777, 0.854593, 1.0 ]
+					"color" : [ 0.646639, 0.821777, 0.854593, 1.0 ],
+					"bgcolor" : [ 0.764706, 0.592157, 0.101961, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
